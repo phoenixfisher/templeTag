@@ -6,6 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42542D2E978D3700ECF06A /* templeTagApp.swift */; };
+		BD4254342E978D3800ECF06A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4254332E978D3800ECF06A /* Assets.xcassets */; };
+		BD4254402E978D3800ECF06A /* templeTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42543F2E978D3800ECF06A /* templeTagTests.swift */; };
+		BD42544A2E978D3800ECF06A /* templeTagUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254492E978D3800ECF06A /* templeTagUITests.swift */; };
+		BD42544C2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42544B2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift */; };
+		BD42545B2E978ED000ECF06A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42545A2E978ECE00ECF06A /* MainTabView.swift */; };
+		BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254622E978F9600ECF06A /* ProfileView.swift */; };
+		BD4254652E978FA900ECF06A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254642E978FA500ECF06A /* MapView.swift */; };
+		BD4254672E978FFF00ECF06A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254662E978FFD00ECF06A /* SearchView.swift */; };
+		BD4254692E97900900ECF06A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254682E97900700ECF06A /* HomeView.swift */; };
+		BD42546B2E9790AE00ECF06A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */; };
+		BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254722E9793AB00ECF06A /* LocationAuth.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		BD42543C2E978D3800ECF06A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -25,40 +40,23 @@
 
 /* Begin PBXFileReference section */
 		BD42542A2E978D3700ECF06A /* templeTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = templeTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD42542D2E978D3700ECF06A /* templeTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = templeTagApp.swift; sourceTree = "<group>"; };
+		BD4254332E978D3800ECF06A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BD4254352E978D3800ECF06A /* templeTag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = templeTag.entitlements; sourceTree = "<group>"; };
+		BD4254362E978D3800ECF06A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD42543B2E978D3800ECF06A /* templeTagTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = templeTagTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD42543F2E978D3800ECF06A /* templeTagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = templeTagTests.swift; sourceTree = "<group>"; };
 		BD4254452E978D3800ECF06A /* templeTagUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = templeTagUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD4254492E978D3800ECF06A /* templeTagUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = templeTagUITests.swift; sourceTree = "<group>"; };
+		BD42544B2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = templeTagUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BD42545A2E978ECE00ECF06A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		BD4254622E978F9600ECF06A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		BD4254642E978FA500ECF06A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BD4254662E978FFD00ECF06A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		BD4254682E97900700ECF06A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BD4254722E9793AB00ECF06A /* LocationAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		BD42544D2E978D3800ECF06A /* Exceptions for "templeTag" folder in "templeTag" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = BD4254292E978D3700ECF06A /* templeTag */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		BD42542C2E978D3700ECF06A /* templeTag */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				BD42544D2E978D3800ECF06A /* Exceptions for "templeTag" folder in "templeTag" target */,
-			);
-			path = templeTag;
-			sourceTree = "<group>";
-		};
-		BD42543E2E978D3800ECF06A /* templeTagTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = templeTagTests;
-			sourceTree = "<group>";
-		};
-		BD4254482E978D3800ECF06A /* templeTagUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = templeTagUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BD4254272E978D3700ECF06A /* Frameworks */ = {
@@ -88,9 +86,9 @@
 		BD4254212E978D3700ECF06A = {
 			isa = PBXGroup;
 			children = (
-				BD42542C2E978D3700ECF06A /* templeTag */,
-				BD42543E2E978D3800ECF06A /* templeTagTests */,
-				BD4254482E978D3800ECF06A /* templeTagUITests */,
+				BD42545D2E978F3800ECF06A /* templeTag */,
+				BD42545E2E978F4500ECF06A /* templeTagTests */,
+				BD42545F2E978F6100ECF06A /* templeTagUITests */,
 				BD42542B2E978D3700ECF06A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +101,105 @@
 				BD4254452E978D3800ECF06A /* templeTagUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BD42545D2E978F3800ECF06A /* templeTag */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254612E978F7E00ECF06A /* Features */,
+				BD4254602E978F7900ECF06A /* Shared */,
+				BD4254332E978D3800ECF06A /* Assets.xcassets */,
+				BD4254362E978D3800ECF06A /* Info.plist */,
+				BD4254352E978D3800ECF06A /* templeTag.entitlements */,
+			);
+			path = templeTag;
+			sourceTree = "<group>";
+		};
+		BD42545E2E978F4500ECF06A /* templeTagTests */ = {
+			isa = PBXGroup;
+			children = (
+				BD42543F2E978D3800ECF06A /* templeTagTests.swift */,
+			);
+			path = templeTagTests;
+			sourceTree = "<group>";
+		};
+		BD42545F2E978F6100ECF06A /* templeTagUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254492E978D3800ECF06A /* templeTagUITests.swift */,
+				BD42544B2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift */,
+			);
+			path = templeTagUITests;
+			sourceTree = "<group>";
+		};
+		BD4254602E978F7900ECF06A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254712E9793A000ECF06A /* Manager */,
+				BD4254702E97932B00ECF06A /* View */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		BD4254612E978F7E00ECF06A /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				BD42546C2E9792FD00ECF06A /* Home */,
+				BD42546F2E97931100ECF06A /* Search */,
+				BD42546E2E97930B00ECF06A /* Map */,
+				BD42546D2E97930500ECF06A /* Profile */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		BD42546C2E9792FD00ECF06A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254682E97900700ECF06A /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BD42546D2E97930500ECF06A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254622E978F9600ECF06A /* ProfileView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		BD42546E2E97930B00ECF06A /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254642E978FA500ECF06A /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		BD42546F2E97931100ECF06A /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254662E978FFD00ECF06A /* SearchView.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		BD4254702E97932B00ECF06A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD42545A2E978ECE00ECF06A /* MainTabView.swift */,
+				BD42542D2E978D3700ECF06A /* templeTagApp.swift */,
+				BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BD4254712E9793A000ECF06A /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254722E9793AB00ECF06A /* LocationAuth.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,9 +216,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				BD42542C2E978D3700ECF06A /* templeTag */,
 			);
 			name = templeTag;
 			packageProductDependencies = (
@@ -143,9 +237,6 @@
 			dependencies = (
 				BD42543D2E978D3800ECF06A /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				BD42543E2E978D3800ECF06A /* templeTagTests */,
-			);
 			name = templeTagTests;
 			packageProductDependencies = (
 			);
@@ -165,9 +256,6 @@
 			);
 			dependencies = (
 				BD4254472E978D3800ECF06A /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				BD4254482E978D3800ECF06A /* templeTagUITests */,
 			);
 			name = templeTagUITests;
 			packageProductDependencies = (
@@ -225,6 +313,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4254342E978D3800ECF06A /* Assets.xcassets in Resources */,
+				BD42546B2E9790AE00ECF06A /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +339,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4254672E978FFF00ECF06A /* SearchView.swift in Sources */,
+				BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */,
+				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
+				BD4254652E978FA900ECF06A /* MapView.swift in Sources */,
+				BD4254692E97900900ECF06A /* HomeView.swift in Sources */,
+				BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */,
+				BD42545B2E978ED000ECF06A /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD4254402E978D3800ECF06A /* templeTagTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +361,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD42544C2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift in Sources */,
+				BD42544A2E978D3800ECF06A /* templeTagUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +394,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = templeTag/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Temple Tag";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -328,6 +429,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = templeTag/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Temple Tag";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
