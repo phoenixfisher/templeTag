@@ -21,7 +21,6 @@ final class LocationAuth: NSObject, ObservableObject, CLLocationManagerDelegate 
         updateStatus()
     }
 
-    /// Call this from a button tap, not automatically on appear.
     func requestAuthorization() {
         guard CLLocationManager.locationServicesEnabled() else { return }
         if manager.authorizationStatus == .notDetermined {

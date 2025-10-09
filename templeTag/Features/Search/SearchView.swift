@@ -11,6 +11,8 @@ struct SearchView: View {
     @State private var searchText: String = ""
     
     var body: some View {
-        TextField("Search", text: $searchText)
+        VStack {
+            TextField("Search", text: $searchText)
+        }
     }
 }

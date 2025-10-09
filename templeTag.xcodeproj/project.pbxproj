@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B72E9828D500AC260F /* TempleClient.swift */; };
+		BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B92E9828F900AC260F /* TempleModel.swift */; };
 		BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42542D2E978D3700ECF06A /* templeTagApp.swift */; };
 		BD4254342E978D3800ECF06A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4254332E978D3800ECF06A /* Assets.xcassets */; };
 		BD4254402E978D3800ECF06A /* templeTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42543F2E978D3800ECF06A /* templeTagTests.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BD2598B72E9828D500AC260F /* TempleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleClient.swift; sourceTree = "<group>"; };
+		BD2598B92E9828F900AC260F /* TempleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleModel.swift; sourceTree = "<group>"; };
 		BD42542A2E978D3700ECF06A /* templeTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = templeTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD42542D2E978D3700ECF06A /* templeTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = templeTagApp.swift; sourceTree = "<group>"; };
 		BD4254332E978D3800ECF06A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +87,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD2598B32E98125500AC260F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BD2598B42E98125D00AC260F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BD4254642E978FA500ECF06A /* MapView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BD2598B52E98126500AC260F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		BD2598B62E9828D000AC260F /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				BD2598B92E9828F900AC260F /* TempleModel.swift */,
+				BD2598B72E9828D500AC260F /* TempleClient.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		BD4254212E978D3700ECF06A = {
 			isa = PBXGroup;
 			children = (
@@ -106,11 +141,11 @@
 		BD42545D2E978F3800ECF06A /* templeTag */ = {
 			isa = PBXGroup;
 			children = (
-				BD4254612E978F7E00ECF06A /* Features */,
-				BD4254602E978F7900ECF06A /* Shared */,
 				BD4254332E978D3800ECF06A /* Assets.xcassets */,
 				BD4254362E978D3800ECF06A /* Info.plist */,
 				BD4254352E978D3800ECF06A /* templeTag.entitlements */,
+				BD4254612E978F7E00ECF06A /* Features */,
+				BD4254602E978F7900ECF06A /* Shared */,
 			);
 			path = templeTag;
 			sourceTree = "<group>";
@@ -135,6 +170,7 @@
 		BD4254602E978F7900ECF06A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BD2598B62E9828D000AC260F /* Service */,
 				BD4254712E9793A000ECF06A /* Manager */,
 				BD4254702E97932B00ECF06A /* View */,
 			);
@@ -171,7 +207,9 @@
 		BD42546E2E97930B00ECF06A /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				BD4254642E978FA500ECF06A /* MapView.swift */,
+				BD2598B32E98125500AC260F /* Model */,
+				BD2598B52E98126500AC260F /* ViewModel */,
+				BD2598B42E98125D00AC260F /* View */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -342,6 +380,8 @@
 				BD4254672E978FFF00ECF06A /* SearchView.swift in Sources */,
 				BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
+				BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */,
+				BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */,
 				BD4254652E978FA900ECF06A /* MapView.swift in Sources */,
 				BD4254692E97900900ECF06A /* HomeView.swift in Sources */,
 				BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */,
