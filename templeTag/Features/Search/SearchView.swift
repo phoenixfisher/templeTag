@@ -31,7 +31,7 @@ struct SearchView: View {
                         .bold()
                     Spacer()
                 }
-                .padding(.top, 50)
+                .padding(.bottom, 4)
                 
                 HStack {
                     TextField("Search a temple...", text: $searchText)

@@ -22,7 +22,7 @@
 		BD42546B2E9790AE00ECF06A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */; };
 		BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254722E9793AB00ECF06A /* LocationAuth.swift */; };
 		BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */; };
-		BD626A012E99410000FA087C /* MapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A002E9940F900FA087C /* MapListView.swift */; };
+		BD626A012E99410000FA087C /* MapsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A002E9940F900FA087C /* MapsMainView.swift */; };
 		BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A022E9942BA00FA087C /* MapsViewModel.swift */; };
 		BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */; };
 		BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB7F4E32E98BD4D00CA2483 /* TempleDetailView.swift */; };
@@ -66,7 +66,7 @@
 		BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD4254722E9793AB00ECF06A /* LocationAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuth.swift; sourceTree = "<group>"; };
 		BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnMap.swift; sourceTree = "<group>"; };
-		BD626A002E9940F900FA087C /* MapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListView.swift; sourceTree = "<group>"; };
+		BD626A002E9940F900FA087C /* MapsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsMainView.swift; sourceTree = "<group>"; };
 		BD626A022E9942BA00FA087C /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
 		BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleViewModel.swift; sourceTree = "<group>"; };
 		BDB7F4E32E98BD4D00CA2483 /* TempleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleDetailView.swift; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		BD2598B42E98125D00AC260F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BD626A002E9940F900FA087C /* MapListView.swift */,
+				BD626A002E9940F900FA087C /* MapsMainView.swift */,
 				BD4254642E978FA500ECF06A /* AllTemplesMapView.swift */,
 			);
 			path = View;
@@ -396,7 +396,7 @@
 				BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */,
 				BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */,
 				BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */,
-				BD626A012E99410000FA087C /* MapListView.swift in Sources */,
+				BD626A012E99410000FA087C /* MapsMainView.swift in Sources */,
 				BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
 				BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */,
