@@ -10,7 +10,7 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var locationAuth = LocationAuth()
-    @StateObject private var vm = TemplesViewModel()
+    @StateObject private var vm = TempleViewModel()
     @State private var position: MapCameraPosition = .region(
       .init(center: .init(latitude: 40.7704, longitude: -111.8919),
             span: .init(latitudeDelta: 0.05, longitudeDelta: 0.05))

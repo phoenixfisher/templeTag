@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class TemplesViewModel: ObservableObject {
+final class TempleViewModel: ObservableObject {
     @Published var temples: [Temple] = []
     @Published var selectedTemple: Temple? = nil
     @Published var isLoading = false

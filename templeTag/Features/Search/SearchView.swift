@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SearchView: View {
-    @StateObject private var templeVM = TemplesViewModel()
+    @StateObject private var templeVM = TempleViewModel()
     @State private var searchText: String = ""
     @FocusState private var showKeyboard: Bool
     

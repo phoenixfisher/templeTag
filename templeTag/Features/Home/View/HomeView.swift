@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var templeVM = TemplesViewModel()
+    @StateObject private var templeVM = TempleViewModel()
     
     var body: some View {
         ScrollView {
@@ -63,6 +63,8 @@ struct HomeView: View {
                 .background(Color(.red).opacity(0.4))
                 .cornerRadius(16)
             }
+            
+            Color.clear.frame(height: 60)
         }
         .padding(.bottom)
         .padding()
