@@ -18,7 +18,6 @@ struct HomeView: View {
                     .bold()
                 Spacer()
             }
-            .padding(.top, 50)
             
             ForEach(0..<3) { _ in
                 VStack(alignment: .leading) {
@@ -72,7 +71,6 @@ struct HomeView: View {
         .task {
             await templeVM.load()
         }
-        .ignoresSafeArea()
     }
 }
 
