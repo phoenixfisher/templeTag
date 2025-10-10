@@ -89,13 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		BD2598B32E98125500AC260F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		BD2598B42E98125D00AC260F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +187,6 @@
 		BD42546C2E9792FD00ECF06A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				BDB7F4DD2E98B0F500CA2483 /* Service */,
-				BDB7F4DA2E98B0E700CA2483 /* Model */,
-				BDB7F4DC2E98B0F000CA2483 /* ViewModel */,
 				BDB7F4DB2E98B0EC00CA2483 /* View */,
 			);
 			path = Home;
@@ -213,7 +203,6 @@
 		BD42546E2E97930B00ECF06A /* Map */ = {
 			isa = PBXGroup;
 			children = (
-				BD2598B32E98125500AC260F /* Model */,
 				BD2598B52E98126500AC260F /* ViewModel */,
 				BD2598B42E98125D00AC260F /* View */,
 			);
@@ -246,33 +235,12 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		BDB7F4DA2E98B0E700CA2483 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		BDB7F4DB2E98B0EC00CA2483 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				BD4254682E97900700ECF06A /* HomeView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		BDB7F4DC2E98B0F000CA2483 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		BDB7F4DD2E98B0F500CA2483 /* Service */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
