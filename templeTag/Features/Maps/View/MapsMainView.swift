@@ -47,7 +47,9 @@ struct MapsMainView: View {
                         if mapsVM.isSearchingNearest {
                             VStack(spacing: 8) {
                                 ProgressView()
+                                    .frame(maxWidth: .infinity, alignment: .center)
                                 Text("Searching for the nearest temple…")
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                     .font(.callout)
                                     .foregroundStyle(.secondary)
                             }
@@ -98,9 +100,7 @@ struct MapsMainView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                 
-                NavigationLink {
-                    AllTemplesMapView().padding(.top, 50).ignoresSafeArea(edges: .top)
-                } label: {
+                NavigationLink(destination: AllTemplesMapView().padding(.top, 50).ignoresSafeArea(edges: .top)) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Browse All Temples")
                             .font(.title2)
