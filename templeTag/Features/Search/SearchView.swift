@@ -26,7 +26,15 @@ struct SearchView: View {
         NavigationStack {
             VStack(spacing: 0) {
                 HStack {
-                    TextField("Search", text: $searchText)
+                    Text("Search")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.top, 50)
+                
+                HStack {
+                    TextField("Search a temple...", text: $searchText)
                         .focused($showKeyboard)
                         .disableAutocorrection(true)
 

@@ -15,6 +15,14 @@ struct MapListView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
+                HStack {
+                    Text("Maps")
+                        .font(.largeTitle)
+                        .bold()
+                    Spacer()
+                }
+                .padding(.top, 50)
+                
                 VStack(alignment: .leading, spacing: 0) {
                     Text("Nearest Temple")
                         .font(.title)
@@ -26,7 +34,7 @@ struct MapListView: View {
                         let coordinate = nearest.coordinate
                         NavigationLink(destination: ShowOnMap(coordinate: coordinate, label: nearest.name)) {
                             HStack {
-                                ShowOnMap(coordinate: coordinate, label: nearest.name)
+                                ShowOnMap(coordinate: coordinate, label: nearest.name).padding(.top, 50).ignoresSafeArea(edges: .top)
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 160)
                                     .clipShape(RoundedRectangle(cornerRadius: 16))
