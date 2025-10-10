@@ -10,23 +10,35 @@ import MapKit
 
 struct MapView: View {
     @StateObject private var locationAuth = LocationAuth()
-    @State private var position = MapCameraPosition.region(
+    @StateObject private var vm = TemplesViewModel()
+    @State private var position: MapCameraPosition = .region(
       .init(center: .init(latitude: 40.7704, longitude: -111.8919),
             span: .init(latitudeDelta: 0.05, longitudeDelta: 0.05))
     )
     
     var body: some View {
         ZStack {
-            Map {
+            Map(position: $position, selection: $vm.selectedTemple) {
                 if locationAuth.canShowUser {
                     UserAnnotation()
+                }
+                ForEach(vm.temples) { temple in
+                    Marker(temple.name, systemImage: "building.columns.fill", coordinate: temple.coordinate)
+                        .tag(temple)
                 }
             }
             .mapControls {
                 MapUserLocationButton()
                 MapCompass()
             }
-            .ignoresSafeArea()
+            .onChange(of: vm.selectedTemple) { _, temple in
+                guard let coords = temple?.coordinate else { return }
+                withAnimation(.easeInOut) {
+                    position = .region(
+                        MKCoordinateRegion(center: coords, latitudinalMeters: 500, longitudinalMeters: 500)
+                    )
+                }
+            }
             
             if !locationAuth.canShowUser {
                 Button {
@@ -38,6 +50,9 @@ struct MapView: View {
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
                 .padding()
             }
+        }
+        .task {
+            await vm.load()
         }
     }
 }
