@@ -18,7 +18,7 @@ struct AllTemplesMapView: View {
     )
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .bottom) {
             Map(position: $position, selection: $vm.selectedTemple) {
                 if locationAuth.canShowUser {
                     UserAnnotation()
@@ -58,4 +58,8 @@ struct AllTemplesMapView: View {
             await vm.load()
         }
     }
+}
+
+#Preview {
+    AllTemplesMapView()
 }
