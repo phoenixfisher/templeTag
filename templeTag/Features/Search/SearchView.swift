@@ -48,22 +48,40 @@ struct SearchView: View {
             .padding(.horizontal)
             .background(Color(.systemGray6))
             .cornerRadius(16)
-            .padding()
             
             if !filteredTemples.isEmpty {
-                LazyVStack {
-                    ForEach(filteredTemples) { temple in
-                        HStack {
-                            Text(temple.name)
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundStyle(Color(.systemGray))
+                ScrollView {
+                    LazyVStack {
+                        ForEach(filteredTemples) { temple in
+                            Button {
+                                TempleDetailView(temple: temple)
+                            } label: {
+                                Text(temple.name)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(Color(.systemGray))
+                                    .padding(.vertical, 4)
+                            }
+                            
+                            if filteredTemples.last != temple {
+                                Divider()
+                            }
                         }
                     }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(16)
+                    .padding(.vertical)
                 }
+                .cornerRadius(16)
+                .padding(.top)
             }
             
             Spacer()
+        }
+        .padding()
+        .task {
+            await templeVM.load()
         }
     }
 }
