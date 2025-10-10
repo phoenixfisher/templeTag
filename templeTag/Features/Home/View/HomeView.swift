@@ -36,7 +36,7 @@ struct HomeView: View {
                 .cornerRadius(16)
                 
                 VStack(alignment: .leading) {
-                    Text("Montly Recap")
+                    Text("Monthly Recap")
                         .font(.title)
                         .bold()
                     ForEach(templeVM.temples) { temple in

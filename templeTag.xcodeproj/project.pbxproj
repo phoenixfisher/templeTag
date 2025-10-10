@@ -16,11 +16,14 @@
 		BD42544C2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42544B2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift */; };
 		BD42545B2E978ED000ECF06A /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42545A2E978ECE00ECF06A /* MainTabView.swift */; };
 		BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254622E978F9600ECF06A /* ProfileView.swift */; };
-		BD4254652E978FA900ECF06A /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254642E978FA500ECF06A /* MapView.swift */; };
+		BD4254652E978FA900ECF06A /* AllTemplesMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254642E978FA500ECF06A /* AllTemplesMapView.swift */; };
 		BD4254672E978FFF00ECF06A /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254662E978FFD00ECF06A /* SearchView.swift */; };
 		BD4254692E97900900ECF06A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254682E97900700ECF06A /* HomeView.swift */; };
 		BD42546B2E9790AE00ECF06A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */; };
 		BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254722E9793AB00ECF06A /* LocationAuth.swift */; };
+		BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */; };
+		BD626A012E99410000FA087C /* MapListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A002E9940F900FA087C /* MapListView.swift */; };
+		BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A022E9942BA00FA087C /* MapsViewModel.swift */; };
 		BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */; };
 		BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB7F4E32E98BD4D00CA2483 /* TempleDetailView.swift */; };
 /* End PBXBuildFile section */
@@ -57,11 +60,14 @@
 		BD42544B2E978D3800ECF06A /* templeTagUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = templeTagUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		BD42545A2E978ECE00ECF06A /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		BD4254622E978F9600ECF06A /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-		BD4254642E978FA500ECF06A /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BD4254642E978FA500ECF06A /* AllTemplesMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllTemplesMapView.swift; sourceTree = "<group>"; };
 		BD4254662E978FFD00ECF06A /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		BD4254682E97900700ECF06A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD4254722E9793AB00ECF06A /* LocationAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuth.swift; sourceTree = "<group>"; };
+		BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnMap.swift; sourceTree = "<group>"; };
+		BD626A002E9940F900FA087C /* MapListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapListView.swift; sourceTree = "<group>"; };
+		BD626A022E9942BA00FA087C /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
 		BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleViewModel.swift; sourceTree = "<group>"; };
 		BDB7F4E32E98BD4D00CA2483 /* TempleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +100,8 @@
 		BD2598B42E98125D00AC260F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BD4254642E978FA500ECF06A /* MapView.swift */,
+				BD626A002E9940F900FA087C /* MapListView.swift */,
+				BD4254642E978FA500ECF06A /* AllTemplesMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -106,6 +113,7 @@
 				BD2598B72E9828D500AC260F /* TempleClient.swift */,
 				BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */,
 				BDB7F4E32E98BD4D00CA2483 /* TempleDetailView.swift */,
+				BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */,
 			);
 			path = Temples;
 			sourceTree = "<group>";
@@ -174,7 +182,7 @@
 			children = (
 				BD42546C2E9792FD00ECF06A /* Home */,
 				BD42546F2E97931100ECF06A /* Search */,
-				BD42546E2E97930B00ECF06A /* Map */,
+				BD42546E2E97930B00ECF06A /* Maps */,
 				BD42546D2E97930500ECF06A /* Profile */,
 			);
 			path = Features;
@@ -196,12 +204,13 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
-		BD42546E2E97930B00ECF06A /* Map */ = {
+		BD42546E2E97930B00ECF06A /* Maps */ = {
 			isa = PBXGroup;
 			children = (
+				BD626A042E9942C300FA087C /* ViewModel */,
 				BD2598B42E98125D00AC260F /* View */,
 			);
-			path = Map;
+			path = Maps;
 			sourceTree = "<group>";
 		};
 		BD42546F2E97931100ECF06A /* Search */ = {
@@ -228,6 +237,14 @@
 				BD4254722E9793AB00ECF06A /* LocationAuth.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		BD626A042E9942C300FA087C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BD626A022E9942BA00FA087C /* MapsViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		BDB7F4DB2E98B0EC00CA2483 /* View */ = {
@@ -376,15 +393,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4254672E978FFF00ECF06A /* SearchView.swift in Sources */,
+				BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */,
 				BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */,
 				BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */,
+				BD626A012E99410000FA087C /* MapListView.swift in Sources */,
 				BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
 				BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */,
 				BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */,
-				BD4254652E978FA900ECF06A /* MapView.swift in Sources */,
+				BD4254652E978FA900ECF06A /* AllTemplesMapView.swift in Sources */,
 				BD4254692E97900900ECF06A /* HomeView.swift in Sources */,
 				BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */,
+				BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */,
 				BD42545B2E978ED000ECF06A /* MainTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,9 +455,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = templeTag/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Temple Tag";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We show your location on the map to help you navigate.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,9 +492,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = templeTag/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Temple Tag";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We show your location on the map to help you navigate.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

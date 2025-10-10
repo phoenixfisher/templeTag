@@ -20,7 +20,7 @@ struct MainTabView: View {
                     Label("Search", systemImage: "magnifyingglass")
                 }
             
-            MapView()
+            MapListView()
                 .tabItem {
                     Label("Map", systemImage: "map")
                 }

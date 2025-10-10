@@ -1,5 +1,5 @@
 //
-//  MapView.swift
+//  AllTemplesMapView.swift
 //  templeTag
 //
 //  Created by Phoenix Fisher on 10/9/25.
@@ -8,12 +8,13 @@
 import SwiftUI
 import MapKit
 
-struct MapView: View {
+struct AllTemplesMapView: View {
     @StateObject private var locationAuth = LocationAuth()
     @StateObject private var vm = TempleViewModel()
     @State private var position: MapCameraPosition = .region(
-      .init(center: .init(latitude: 40.7704, longitude: -111.8919),
-            span: .init(latitudeDelta: 0.05, longitudeDelta: 0.05))
+      .init(
+        center: .init(latitude: 40.7704, longitude: -111.8919),
+        span: .init(latitudeDelta: 0.05, longitudeDelta: 0.05))
     )
     
     var body: some View {
@@ -28,7 +29,9 @@ struct MapView: View {
                 }
             }
             .mapControls {
-                MapUserLocationButton()
+                if locationAuth.canShowUser {
+                    MapUserLocationButton()
+                }
                 MapCompass()
             }
             .onChange(of: vm.selectedTemple) { _, temple in
