@@ -27,6 +27,7 @@ struct SearchView: View {
             HStack {
                 TextField("Search", text: $searchText)
                     .focused($showKeyboard)
+                    .disableAutocorrection(true)
 
                 Button {
                     withAnimation(.easeInOut) {
@@ -53,25 +54,20 @@ struct SearchView: View {
                 ScrollView {
                     LazyVStack {
                         ForEach(filteredTemples) { temple in
-                            Button {
-                                TempleDetailView(temple: temple)
-                            } label: {
+                            NavigationLink(destination: TempleDetailView(temple: temple)) {
                                 Text(temple.name)
+                                    .foregroundStyle(Color(.label))
                                 Spacer()
                                 Image(systemName: "chevron.right")
                                     .foregroundStyle(Color(.systemGray))
-                                    .padding(.vertical, 4)
                             }
                             
-                            if filteredTemples.last != temple {
-                                Divider()
-                            }
+                            if filteredTemples.last != temple { Divider() }
                         }
                     }
                     .padding()
                     .background(Color(.systemGray6))
                     .cornerRadius(16)
-                    .padding(.vertical)
                 }
                 .cornerRadius(16)
                 .padding(.top)
