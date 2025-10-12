@@ -21,13 +21,12 @@ struct MapListView: View {
                         .bold()
                     Spacer()
                 }
-                .padding(.top, 50)
+                .padding(.horizontal)
                 
-                VStack(alignment: .leading, spacing: 0) {
+                VStack(alignment: .leading) {
                     Text("Nearest Temple")
-                        .font(.title)
+                        .font(.title2)
                         .bold()
-                        .padding()
 
                     // 1) Check permission, then bind nearestTemple safely
                     if locationAuth.canShowUser, let nearest = mapsVM.nearestTemple {
@@ -46,14 +45,12 @@ struct MapListView: View {
 
                     // Have permission but no nearest temple yet
                     } else if locationAuth.canShowUser {
-                        // show a friendly placeholder while the app calculates nearest temple
-                        VStack(spacing: 8) {
-                            ProgressView()
-                            Text("Searching for the nearest temple…")
+                        HStack {
+                            Text("Searching for the nearest temple")
                                 .font(.callout)
                                 .foregroundStyle(.secondary)
+                            ProgressView()
                         }
-                        .padding()
 
                     // No permission - prompt enable location
                     } else {
@@ -62,7 +59,6 @@ struct MapListView: View {
                         } label: {
                             Text("Enable Location to Access This Feature")
                         }
-                        .padding()
                     }
 
                     // Extra enable button area
@@ -70,42 +66,37 @@ struct MapListView: View {
                         Button {
                             locationAuth.requestAuthorization()
                         } label: {
-                            Label("Enable Location", systemImage: "location.circle")
+                            Text("Enable Location")
+                            Image(systemName: "location.circle")
                         }
-                        .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 12))
-                        .padding()
                     }
                 }
-                .frame(maxWidth: .infinity)
-                .padding(16)
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                 .shadow(radius: 1)
-                .padding(.horizontal, 16)
-                .padding(.top, 12)
+                .padding()
                 
                 NavigationLink {
                     AllTemplesMapView().padding(.top, 50).ignoresSafeArea(edges: .top)
                 } label: {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Browse All Temples")
+                    HStack {
+                        Text("Map Showing All Temples")
                             .font(.title2)
                             .bold()
+                        Spacer()
                         HStack(alignment: .center, spacing: 12) {
-                            AllTemplesMapView()
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 160)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
                             Image(systemName: "chevron.right")
                                 .font(.headline)
                         }
                     }
-                    .padding(16)
+                    .padding()
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                     .shadow(radius: 1)
                 }
-                .padding(.horizontal, 16)
-                .padding(.top, 12)
+                .foregroundStyle(Color(.darkText))
+                .padding(.horizontal)
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .onAppear {
