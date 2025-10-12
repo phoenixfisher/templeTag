@@ -10,7 +10,7 @@ import MapKit
 
 struct AllTemplesMapView: View {
     @StateObject private var locationAuth = LocationAuth()
-    @StateObject private var vm = TempleViewModel()
+    @StateObject private var templeVM = TempleViewModel()
     @State private var position: MapCameraPosition = .region(
       .init(
         center: .init(latitude: 40.7704, longitude: -111.8919),
@@ -19,11 +19,11 @@ struct AllTemplesMapView: View {
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            Map(position: $position, selection: $vm.selectedTemple) {
+            Map(position: $position, selection: $templeVM.selectedTemple) {
                 if locationAuth.canShowUser {
                     UserAnnotation()
                 }
-                ForEach(vm.temples) { temple in
+                ForEach(templeVM.temples) { temple in
                     Marker(temple.name, systemImage: "building.columns.fill", coordinate: temple.coordinate)
                         .tag(temple)
                 }
@@ -34,7 +34,7 @@ struct AllTemplesMapView: View {
                 }
                 MapCompass()
             }
-            .onChange(of: vm.selectedTemple) { _, temple in
+            .onChange(of: templeVM.selectedTemple) { _, temple in
                 guard let coords = temple?.coordinate else { return }
                 withAnimation(.easeInOut) {
                     position = .region(
@@ -55,7 +55,22 @@ struct AllTemplesMapView: View {
             }
         }
         .task {
-            await vm.load()
+            await templeVM.load()
+            
+            if locationAuth.canShowUser, let userCoord = locationAuth.location {
+                // Center the map on user’s location
+                withAnimation(.easeInOut) {
+                    position = .region(
+                        MKCoordinateRegion(
+                            center: userCoord,
+                            span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1)
+                        )
+                    )
+                }
+            } else {
+                // Ask for authorization if not yet granted
+                locationAuth.requestAuthorization()
+            }
         }
     }
 }

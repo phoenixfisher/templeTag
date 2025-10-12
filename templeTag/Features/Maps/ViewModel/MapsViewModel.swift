@@ -14,6 +14,12 @@ final class MapsViewModel: ObservableObject {
     @Published var nearestTemple: Temple? = nil
     @Published var isSearchingNearest: Bool = false
     @Published var nearestSearchFailed: Bool = false
+    @Published var cachedLocation: CLLocationCoordinate2D?
+
+    private let autoRecomputeInterval: TimeInterval = 60 // seconds
+    private var lastSearchAt: Date?
+    private var searchStartAt: Date?
+    private var debounceWorkItem: DispatchWorkItem?
     private var nearestSearchWorkItem: DispatchWorkItem?
     private let templeVM: TempleViewModel
 
@@ -29,28 +35,70 @@ final class MapsViewModel: ObservableObject {
         nearestSearchWorkItem?.cancel()
         isSearchingNearest = false
         nearestSearchFailed = false
+        lastSearchAt = Date()
+        searchStartAt = nil
     }
 
     func startNearestSearch(currentLocation: CLLocationCoordinate2D?) {
-        // Cancel previous items and start search
+        // Use explicit location or fallback to cached
+        print("Starting nearest temple search...")
+        let loc = currentLocation ?? cachedLocation
+
+        // Cancel any pending debounce
+        debounceWorkItem?.cancel()
         nearestSearchWorkItem?.cancel()
         nearestSearchFailed = false
         isSearchingNearest = true
         
-        if let loc = currentLocation {
-            getNearestTemple(from: loc)
+        guard let loc else {
+            print("No location available.")
+            isSearchingNearest = false
+            nearestSearchFailed = true
+            return
         }
-        
+
+        guard !templeVM.temples.isEmpty else {
+            print("No temple data loaded.")
+            isSearchingNearest = false
+            nearestSearchFailed = true
+            return
+        }
+
+        // Record that a search has started now
+        searchStartAt = Date()
+        getNearestTemple(from: loc)
+        print("Searching for nearest temple using current location...")
+
+        // 5s timeout
         let work = DispatchWorkItem { [weak self] in
+            print("Search timed out (no temple found in 5 seconds).")
             guard let self else { return }
-            // If the search fails
             if self.nearestTemple == nil {
                 self.nearestSearchFailed = true
             }
             self.isSearchingNearest = false
         }
-        
+        print("Search scheduled with 5s timeout.")
+        nearestSearchWorkItem = work
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: work)
+    }
+
+    func considerLocationUpdate(_ newLocation: CLLocationCoordinate2D) {
+        cachedLocation = newLocation
+
+        // If a search is already in progress, don't restart it on every tick
+        if isSearchingNearest { return }
+        if let last = lastSearchAt, Date().timeIntervalSince(last) < autoRecomputeInterval {
+            return
+        }
+
+        // Debounce rapid incoming location updates: wait 1s of calm before starting
+        debounceWorkItem?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            self?.startNearestSearch(currentLocation: newLocation)
+        }
+        debounceWorkItem = work
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: work)
     }
     
     private func distance(from a: CLLocationCoordinate2D, to b: CLLocationCoordinate2D) -> CLLocationDistance {

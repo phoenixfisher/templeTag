@@ -12,23 +12,38 @@ struct TempleDetailView: View {
     var temple: Temple? = nil
     
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 10) {
             Image("ColoredTempleIcon")
                 .resizable()
-                .frame(width: 100, height: 100)
                 .aspectRatio(contentMode: .fill)
-                .padding()
-                .cornerRadius(16)
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .overlay(
+                    Circle().stroke(Color(.tintColor), lineWidth: 4)
+                )
+                .frame(maxWidth: .infinity, alignment: .center)
             
             if let temple = temple {
-                Text("Name: \(temple.name)")
-                Text("Location: \(temple.country)")
+                HStack {
+                    Text("Name:")
+                        .font(.title3)
+                        .bold()
+                    Spacer()
+                    Text(temple.name)
+                }
+                HStack {
+                    Text("Location:")
+                        .font(.title3)
+                        .bold()
+                    Spacer()
+                    Text(temple.country)
+                }
             }
             
             if let coordinate = temple?.coordinate, let label = temple?.name {
-                NavigationLink(destination: ShowOnMap(coordinate: coordinate, label: label)) {
-                    Text("Show On Map")
-                }
+                ShowOnMap(coordinate: coordinate, label: label)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(16)
             }
         }
         .frame(maxWidth: .infinity)
@@ -38,3 +53,4 @@ struct TempleDetailView: View {
         }
     }
 }
+

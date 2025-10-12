@@ -24,17 +24,9 @@ struct SearchView: View {
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 0) {
+            VStack {
                 HStack {
-                    Text("Search")
-                        .font(.largeTitle)
-                        .bold()
-                    Spacer()
-                }
-                .padding(.bottom, 4)
-                
-                HStack {
-                    TextField("Search a temple...", text: $searchText)
+                    TextField("Search a temple name...", text: $searchText)
                         .focused($showKeyboard)
                         .disableAutocorrection(true)
 
@@ -78,8 +70,10 @@ struct SearchView: View {
                         .background(Color(.systemGray6))
                         .cornerRadius(16)
                     }
+                    .refreshable {
+                        await templeVM.load()
+                    }
                     .cornerRadius(16)
-                    .padding(.top)
                 }
                 
                 Spacer()
