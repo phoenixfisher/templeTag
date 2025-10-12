@@ -21,11 +21,12 @@ struct MapsMainView: View {
                         .bold()
                     Spacer()
                 }
+                .padding(.horizontal)
                 
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading) {
                     Text("Nearest Temple")
                         .font(.title2)
-                        .foregroundStyle(Color(.darkText))
+                        .bold()
 
                     // 1) Check permission, then bind nearestTemple safely
                     if locationAuth.canShowUser, let nearest = mapsVM.nearestTemple {
@@ -44,6 +45,7 @@ struct MapsMainView: View {
 
                     // Have permission but no nearest temple yet
                     } else if locationAuth.canShowUser {
+<<<<<<< HEAD:templeTag/Features/Maps/View/MapsMainView.swift
                         if mapsVM.isSearchingNearest {
                             VStack(spacing: 8) {
                                 ProgressView()
@@ -74,6 +76,13 @@ struct MapsMainView: View {
                                 Text("Find Nearest Temple")
                                 Image(systemName: "location.magnifyingglass")
                             }
+=======
+                        HStack {
+                            Text("Searching for the nearest temple")
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                            ProgressView()
+>>>>>>> main:templeTag/Features/Maps/View/MapListView.swift
                         }
 
                     // No permission - prompt enable location
@@ -99,16 +108,26 @@ struct MapsMainView: View {
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
+<<<<<<< HEAD:templeTag/Features/Maps/View/MapsMainView.swift
                 
                 NavigationLink(destination: AllTemplesMapView().padding(.top, 50).ignoresSafeArea(edges: .top)) {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Browse All Temples")
                             .font(.title2)
+=======
+                .shadow(radius: 1)
+                .padding()
+                
+                NavigationLink {
+                    AllTemplesMapView().padding(.top, 50).ignoresSafeArea(edges: .top)
+                } label: {
+                    HStack {
+                        Text("Map Showing All Temples")
+                            .font(.title2)
+                            .bold()
+                        Spacer()
+>>>>>>> main:templeTag/Features/Maps/View/MapListView.swift
                         HStack(alignment: .center, spacing: 12) {
-                            AllTemplesMapView()
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 160)
-                                .clipShape(RoundedRectangle(cornerRadius: 16))
                             Image(systemName: "chevron.right")
                                 .font(.headline)
                         }
@@ -116,6 +135,11 @@ struct MapsMainView: View {
                     .padding()
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                 }
+<<<<<<< HEAD:templeTag/Features/Maps/View/MapsMainView.swift
+=======
+                .foregroundStyle(Color(.darkText))
+                .padding(.horizontal)
+>>>>>>> main:templeTag/Features/Maps/View/MapListView.swift
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .foregroundStyle(Color(.darkText))
