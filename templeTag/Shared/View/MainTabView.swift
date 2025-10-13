@@ -25,7 +25,7 @@ struct MainTabView: View {
                     Label("Map", systemImage: "map")
                 }
             
-            ProfileView()
+            ProfileView(vm: ProfileViewModel())
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
