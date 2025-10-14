@@ -16,21 +16,23 @@ struct ProfileView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 16) {
-                header
-                stats
-                progress
-                achievements
-                recentActivity
-                settings
+        NavigationStack {
+            ScrollView {
+                VStack(spacing: 16) {
+                    header
+                    stats
+                    progress
+                    achievements
+                    recentActivity
+                    settings
+                }
+                .padding(.horizontal, 16)
+                .padding(.vertical, 24)
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 24)
+            .background(.background)
+            .navigationTitle("Profile")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .background(.background)
-        .navigationTitle("Profile")
-        .navigationBarTitleDisplayMode(.inline)
     }
     
     // MARK: Components making up body view
