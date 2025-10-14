@@ -19,7 +19,7 @@ struct ProfileView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 16) {
-                    header
+                    account
                     stats
                     progress
                     achievements
@@ -37,39 +37,91 @@ struct ProfileView: View {
     
     // MARK: Components making up body view
     
-    // Header
-    private var header: some View {
-        HStack(alignment: .center, spacing: 16) {
-            Avatar(initials: vm.initialsPlaceholder, image: vm.avatar)
-                .frame(width: 72, height: 72)
+    // Account
+    private var account: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            SectionHeader(title: "Account")
             
-            VStack(alignment: .leading, spacing: 6) {
-                Text(vm.displayName.isEmpty ? "Your Name" : vm.displayName)
-                    .font(.title2.weight(.semibold))
-                Label(vm.homeTemple.isEmpty ? "Home Temple" : vm.homeTemple, systemImage: "house.fill")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-                if let memberSince = vm.memberSince {
-                    Text("Member since \(memberSince.formatted(.dateTime.year().month()))")
-                        .font(.footnote)
+            // Not logged in
+            if vm.displayName.isEmpty {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("You're not signed in.")
+                        .font(.headline)
+                    Text("Sign in to save your visited temples, sync across devices, and back up notes and photos.")
+                        .font(.subheadline)
                         .foregroundStyle(.secondary)
+                    if vm.isLoading {
+                        HStack {
+                            ProgressView()
+                                .progressViewStyle(.circular)
+                                .scaleEffect(1.4)
+                            Text("Signing in...")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(16)
+                        .background(
+                            RoundedRectangle(cornerRadius: 24)
+                                .fill(.ultraThinMaterial)
+                                .shadow(radius: 4, y: 2)
+                        )
+                    } else {
+                        Button(action: { vm.onSignIn?() }) {
+                            HStack(spacing: 8) {
+                                Image(systemName: "g.circle.fill")
+                                Text("Sign in with Google")
+                                    .fontWeight(.semibold)
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(.thinMaterial, in: Capsule())
+                        }
+                    }
                 }
+                .frame(maxWidth: .infinity)
+                .padding(16)
+                .background(
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(.ultraThinMaterial)
+                        .shadow(radius: 4, y: 2)
+                )
+                
+            // Logged in
+            } else {
+                HStack(alignment: .center, spacing: 16) {
+                    Avatar(initials: vm.initials, image: vm.avatar)
+                        .frame(width: 72, height: 72)
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(vm.displayName.isEmpty ? "Your Name" : vm.displayName)
+                            .font(.title2.weight(.semibold))
+                        Label(vm.homeTemple.isEmpty ? "Home Temple" : vm.homeTemple, systemImage: "house.fill")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                        if let memberSince = vm.memberSince {
+                            Text("Member since \(memberSince.formatted(.dateTime.year().month()))")
+                                .font(.footnote)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    Spacer()
+                    Button { vm.onEditProfile?() } label: {
+                        Image(systemName: "pencil")
+                            .font(.title3.weight(.semibold))
+                            .padding(10)
+                            .background(.thinMaterial, in: Circle())
+                    }
+                    .accessibilityLabel("Edit profile")
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(.ultraThinMaterial)
+                        .shadow(radius: 4, y: 2)
+                )
             }
-            Spacer()
-            Button { vm.onEditProfile?() } label: {
-                Image(systemName: "pencil")
-                    .font(.title3.weight(.semibold))
-                    .padding(10)
-                    .background(.thinMaterial, in: Circle())
-            }
-            .accessibilityLabel("Edit profile")
         }
-        .padding()
-        .background(
-            RoundedRectangle(cornerRadius: 24)
-                .fill(.ultraThinMaterial)
-                .shadow(radius: 4, y: 2)
-        )
     }
     
     // Stats
@@ -205,6 +257,20 @@ struct ProfileView: View {
                     .fill(.ultraThinMaterial)
                     .shadow(radius: 4, y: 2)
             )
+            
+            // Sign out button
+            if !vm.displayName.isEmpty {
+                Button(action: { vm.onSignOut?() }) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                        Text("Sign Out")
+                            .fontWeight(.semibold)
+                    }
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 10)
+                }
+                .frame(maxWidth: .infinity, alignment: .center)
+            }
         }
         .padding(.bottom, 24)
     }

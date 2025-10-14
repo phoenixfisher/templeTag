@@ -30,6 +30,7 @@ final class MapsViewModel: ObservableObject {
         nearestTemple = templeVM.temples.min { a, b in
             distance(from: location, to: a.coordinate) < distance(from: location, to: b.coordinate)
         }
+        print("Nearest temple found: \(nearestTemple?.name ?? "")")
         
         // Successfully fetched nearest temple
         nearestSearchWorkItem?.cancel()
@@ -41,7 +42,6 @@ final class MapsViewModel: ObservableObject {
 
     func startNearestSearch(currentLocation: CLLocationCoordinate2D?) {
         // Use explicit location or fallback to cached
-        print("Starting nearest temple search...")
         let loc = currentLocation ?? cachedLocation
 
         // Cancel any pending debounce
@@ -64,21 +64,20 @@ final class MapsViewModel: ObservableObject {
             return
         }
 
-        // Record that a search has started now
+        // Search starting with location
+        print("Searching for nearest temple using current location...")
         searchStartAt = Date()
         getNearestTemple(from: loc)
-        print("Searching for nearest temple using current location...")
 
         // 5s timeout
         let work = DispatchWorkItem { [weak self] in
-            print("Search timed out (no temple found in 5 seconds).")
             guard let self else { return }
             if self.nearestTemple == nil {
+                print("Search timed out (no temple found in 5 seconds).")
                 self.nearestSearchFailed = true
             }
             self.isSearchingNearest = false
         }
-        print("Search scheduled with 5s timeout.")
         nearestSearchWorkItem = work
         DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: work)
     }

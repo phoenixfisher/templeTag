@@ -11,10 +11,11 @@ import Combine
 final class ProfileViewModel: ObservableObject {
     // Display
     @Published var displayName: String = ""
-    @Published var initialsPlaceholder: String = "??"
+    @Published var initials: String = "??"
     @Published var avatar: Image? = nil
     @Published var homeTemple: String = ""
     @Published var memberSince: Date? = nil
+    @Published var isLoading: Bool = false
     
     // Stats
     @Published var totalVisited: Int = 0
@@ -36,12 +37,14 @@ final class ProfileViewModel: ObservableObject {
     // Goal
     @Published var currentGoal: Goal = .init(label: "Set a goal", current: 0, target: 0)
     
-    // Handlers (still have to wire these to pages/flows)
+    // Handlers
     var onEditProfile: (() -> Void)?
     var onToggleNotifications: (() -> Void)?
     var onChangeDefaultView: (() -> Void)?
     var onExport: (() -> Void)?
     var onPrivacy: (() -> Void)?
+    var onSignIn: (() -> Void)?
+    var onSignOut: (() -> Void)?
     
     // Derived
     var progressFraction: CGFloat {
