@@ -24,7 +24,7 @@
 		BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */; };
 		BD626A012E99410000FA087C /* MapsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A002E9940F900FA087C /* MapsMainView.swift */; };
 		BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A022E9942BA00FA087C /* MapsViewModel.swift */; };
-		BD6ACDDF2E9D51A60021C482 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDDE2E9D51990021C482 /* Components.swift */; };
+		BD6ACDDF2E9D51A60021C482 /* UserDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDDE2E9D51990021C482 /* UserDataClasses.swift */; };
 		BD6ACDE12E9D52EE0021C482 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */; };
 		BD6ACDE52E9D5D530021C482 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */; };
 		BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */; };
@@ -71,7 +71,7 @@
 		BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnMap.swift; sourceTree = "<group>"; };
 		BD626A002E9940F900FA087C /* MapsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsMainView.swift; sourceTree = "<group>"; };
 		BD626A022E9942BA00FA087C /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
-		BD6ACDDE2E9D51990021C482 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		BD6ACDDE2E9D51990021C482 /* UserDataClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClasses.swift; sourceTree = "<group>"; };
 		BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
 		BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleViewModel.swift; sourceTree = "<group>"; };
@@ -260,7 +260,7 @@
 		BD6ACDDB2E9D51760021C482 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				BD6ACDDE2E9D51990021C482 /* Components.swift */,
+				BD6ACDDE2E9D51990021C482 /* UserDataClasses.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -457,7 +457,7 @@
 				BD626A012E99410000FA087C /* MapsMainView.swift in Sources */,
 				BD42542E2E978D3700ECF06A /* templeTagApp.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
-				BD6ACDDF2E9D51A60021C482 /* Components.swift in Sources */,
+				BD6ACDDF2E9D51A60021C482 /* UserDataClasses.swift in Sources */,
 				BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */,
 				BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */,
 				BD4254652E978FA900ECF06A /* AllTemplesMapView.swift in Sources */,

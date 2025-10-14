@@ -8,11 +8,10 @@
 import SwiftUI
 import Combine
 
-// MARK: - ViewModel + Models (no mock data)
 final class ProfileViewModel: ObservableObject {
     // Display
     @Published var displayName: String = ""
-    @Published var initialsPlaceholder: String = "TT"
+    @Published var initialsPlaceholder: String = "??"
     @Published var avatar: Image? = nil
     @Published var homeTemple: String = ""
     @Published var memberSince: Date? = nil
@@ -37,7 +36,7 @@ final class ProfileViewModel: ObservableObject {
     // Goal
     @Published var currentGoal: Goal = .init(label: "Set a goal", current: 0, target: 0)
     
-    // Handlers (wire these to flows/sheets)
+    // Handlers (still have to wire these to pages/flows)
     var onEditProfile: (() -> Void)?
     var onToggleNotifications: (() -> Void)?
     var onChangeDefaultView: (() -> Void)?

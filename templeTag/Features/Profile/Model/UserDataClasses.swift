@@ -1,5 +1,5 @@
 //
-//  Components.swift
+//  UserDataClasses.swift
 //  templeTag
 //
 //  Created by Phoenix Fisher on 10/13/25.
@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - Data Types
 struct Visit: Identifiable, Hashable {
     let id = UUID()
     let templeName: String

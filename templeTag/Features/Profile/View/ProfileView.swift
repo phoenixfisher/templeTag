@@ -8,7 +8,6 @@
 import SwiftUI
 import CoreGraphics
 
-// MARK: - ProfileView
 struct ProfileView: View {
     @StateObject private var vm: ProfileViewModel
     
@@ -34,7 +33,9 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    // MARK: Header
+    // MARK: Components making up body view
+    
+    // Header
     private var header: some View {
         HStack(alignment: .center, spacing: 16) {
             Avatar(initials: vm.initialsPlaceholder, image: vm.avatar)
@@ -69,7 +70,7 @@ struct ProfileView: View {
         )
     }
     
-    // MARK: Stats
+    // Stats
     private var stats: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(title: "Overview")
@@ -90,7 +91,7 @@ struct ProfileView: View {
         }
     }
     
-    // MARK: Progress
+    // Progress
     private var progress: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(title: "Progress")
@@ -119,7 +120,7 @@ struct ProfileView: View {
         }
     }
     
-    // MARK: Achievements
+    // Achievements
     private var achievements: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(title: "Achievements")
@@ -138,7 +139,7 @@ struct ProfileView: View {
         }
     }
     
-    // MARK: Recent Activity
+    // Recent Activity
     private var recentActivity: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(title: "Recent Activity")
@@ -178,7 +179,7 @@ struct ProfileView: View {
         }
     }
     
-    // MARK: Settings
+    // Settings
     private var settings: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(title: "Settings")
@@ -207,11 +208,8 @@ struct ProfileView: View {
     }
 }
 
-// MARK: - Preview (uses empty VM; not "mock data", just to render)
 #Preview {
-    NavigationStack {
-        ProfileView(vm: ProfileViewModel())
-            .tint(.primary)
-            .background(Color(.systemGroupedBackground))
-    }
+    ProfileView(vm: ProfileViewModel())
+        .tint(.primary)
+        .background(Color(.systemGroupedBackground))
 }
