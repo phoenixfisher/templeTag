@@ -73,10 +73,12 @@ struct ProfileView: View {
                                 Text("Sign in with Google")
                                     .fontWeight(.semibold)
                             }
+                            .frame(maxWidth: .infinity, alignment: .center)
                             .padding(.horizontal, 16)
                             .padding(.vertical, 10)
                             .background(.thinMaterial, in: Capsule())
                         }
+                        .foregroundStyle(Color(.blue))
                     }
                 }
                 .frame(maxWidth: .infinity)

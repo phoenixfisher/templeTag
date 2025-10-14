@@ -113,11 +113,12 @@ struct ProgressRing: View {
                 .stroke(.primary.opacity(0.9), style: StrokeStyle(lineWidth: 10, lineCap: .round))
                 .rotationEffect(.degrees(-90))
                 .animation(.smooth(duration: 0.6), value: progress)
+                .foregroundStyle(Color(.accent))
             Text("\(Int(progress * 100))%")
                 .font(.headline)
+                .foregroundStyle(Color(.accent))
         }
         .padding(6)
-        .background(RoundedRectangle(cornerRadius: 20).fill(.ultraThinMaterial))
     }
 }
 
