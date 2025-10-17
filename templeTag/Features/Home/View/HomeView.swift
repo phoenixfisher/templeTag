@@ -82,7 +82,7 @@ struct HomeView: View {
 
     private var quickActions: some View {
         HomeSection(title: "Quick Actions") {
-            HStack(spacing: 12) {
+            VStack(spacing: 12) {
                 Button { showAllTemples = true } label: {
                     Label("All Temples", systemImage: "list.bullet")
                         .frame(maxWidth: .infinity)
@@ -103,20 +103,7 @@ struct HomeView: View {
             }
         }
         .sheet(isPresented: $showAllTemples) {
-            // Minimal fallback list if you don't have a dedicated screen yet
-            NavigationStack {
-                List(templeVM.temples) { t in
-                    VStack(alignment: .leading) {
-                        Text(t.name).font(.headline)
-                        Text(t.city.map { city in
-                            t.state.map { "\(city), \($0)" } ?? city
-                        } ?? t.country ?? "")
-                        .foregroundStyle(.secondary)
-                        .font(.subheadline)
-                    }
-                }
-                .navigationTitle("All Temples")
-            }
+            SearchView()
         }
     }
 
@@ -191,9 +178,9 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
-}
+//#Preview {
+//    HomeView()
+//}
 
 // MARK: - Helper subviews
 

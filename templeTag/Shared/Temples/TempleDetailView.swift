@@ -130,7 +130,7 @@ struct TempleDetailView: View {
                         Text(String(format: "Lat: %.5f, Lng: %.5f", lat, lon))
                             .foregroundStyle(.secondary)
                     }
-                    Text("Updated: \(temple.lastUpdated.formatted(date: .abbreviated, time: .shortened))")
+                    Text("Info last updated: \(temple.lastUpdated.formatted(date: .abbreviated, time: .shortened))")
                         .foregroundStyle(.secondary)
                         .font(.footnote)
                 }
