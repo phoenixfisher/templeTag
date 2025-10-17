@@ -104,10 +104,12 @@ struct TempleDetailView: View {
                 }
 
                 // Map
-                ShowOnMap(coordinate: temple.coordinate, label: temple.name)
-                .frame(height: 220)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-                .accessibilityHidden(true)
+                if let templeCoords = temple.coordinate {
+                    ShowOnMap(coordinate: templeCoords, label: temple.name)
+                        .frame(height: 220)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .accessibilityHidden(true)
+                }
 
                 // Description
                 if let desc = temple.description, !desc.isEmpty {
@@ -121,9 +123,13 @@ struct TempleDetailView: View {
 
                 // Meta
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Country: \(temple.country)")
-                    Text(String(format: "Lat: %.5f, Lng: %.5f", temple.latitude, temple.longitude))
-                        .foregroundStyle(.secondary)
+                    if let country = temple.country {
+                        Text("Country: \(country)")
+                    }
+                    if let lat = temple.latitude, let lon = temple.longitude {
+                        Text(String(format: "Lat: %.5f, Lng: %.5f", lat, lon))
+                            .foregroundStyle(.secondary)
+                    }
                     Text("Updated: \(temple.lastUpdated.formatted(date: .abbreviated, time: .shortened))")
                         .foregroundStyle(.secondary)
                         .font(.footnote)

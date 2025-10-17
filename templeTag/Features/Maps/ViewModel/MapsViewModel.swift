@@ -27,9 +27,10 @@ final class MapsViewModel: ObservableObject {
 
     func getNearestTemple(from location: CLLocationCoordinate2D) {
         guard !templeVM.temples.isEmpty else { return }
-        nearestTemple = templeVM.temples.min { a, b in
+        let candidates = templeVM.templesWithCoords
+        nearestTemple = candidates.min { a, b in
             distance(from: location, to: a.coordinate) < distance(from: location, to: b.coordinate)
-        }
+        }?.temple
         print("Nearest temple found: \(nearestTemple?.name ?? "")")
         
         // Successfully fetched nearest temple

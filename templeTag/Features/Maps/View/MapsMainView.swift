@@ -36,8 +36,7 @@ struct MapsMainView: View {
                         .bold()
 
                     // 1) Check permission, then bind nearestTemple safely
-                    if locationAuth.canShowUser, let nearest = mapsVM.nearestTemple {
-                        let coordinate = nearest.coordinate
+                    if locationAuth.canShowUser, let nearest = mapsVM.nearestTemple, let coordinate = nearest.coordinate {
                         NavigationLink(destination: ShowOnMap(coordinate: coordinate, label: nearest.name)
                             .padding(.top, 50)
                             .ignoresSafeArea(edges: .top)

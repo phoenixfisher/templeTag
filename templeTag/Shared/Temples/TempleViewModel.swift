@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
 
 final class TempleViewModel: ObservableObject {
     @Published var temples: [Temple] = []
@@ -15,6 +16,14 @@ final class TempleViewModel: ObservableObject {
     @Published var error: String?
 
     private let client = TempleClient()
+    
+    // For filtering when showing on maps
+    var templesWithCoords: [(temple: Temple, coordinate: CLLocationCoordinate2D)] {
+        temples.compactMap { temple in
+            guard let coord = temple.coordinate else { return nil }
+            return (temple, coord)
+        }
+    }
 
     @MainActor
     func load() async {

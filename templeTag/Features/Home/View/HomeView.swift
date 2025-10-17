@@ -110,7 +110,7 @@ struct HomeView: View {
                         Text(t.name).font(.headline)
                         Text(t.city.map { city in
                             t.state.map { "\(city), \($0)" } ?? city
-                        } ?? t.country)
+                        } ?? t.country ?? "")
                         .foregroundStyle(.secondary)
                         .font(.subheadline)
                     }
@@ -249,7 +249,7 @@ private struct TempleCard: View {
                     .shadow(radius: 2)
                 Text(temple.city.map { city in
                     temple.state.map { "\(city), \($0)" } ?? city
-                } ?? temple.country)
+                } ?? temple.country ?? "")
                 .font(.caption)
                 .foregroundStyle(.white.opacity(0.9))
             }

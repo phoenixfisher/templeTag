@@ -24,8 +24,10 @@ struct AllTemplesMapView: View {
                     UserAnnotation()
                 }
                 ForEach(templeVM.temples) { temple in
-                    Marker(temple.name, systemImage: "building.columns.fill", coordinate: temple.coordinate)
-                        .tag(temple)
+                    if let coords = temple.coordinate {
+                        Marker(temple.name, systemImage: "building.columns.fill", coordinate: coords)
+                            .tag(temple)
+                    }
                 }
             }
             .mapControls {

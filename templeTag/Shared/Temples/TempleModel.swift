@@ -11,11 +11,13 @@ import CoreLocation
 struct Temple: Identifiable, Codable, Equatable, Hashable {
     let id: String
     let name: String
-    let country: String
     let status: Status
+    let country: String?
     let state: String?
     let city: String?
     let address: String?
+    let latitude: Double?
+    let longitude: Double?
     let website: URL?
     let appointments: URL?
     let photo: URL?
@@ -23,11 +25,12 @@ struct Temple: Identifiable, Codable, Equatable, Hashable {
     let photoCredit: String?
     let photoCaption: String?
     let description: String?
-    let latitude: Double
-    let longitude: Double
     let lastUpdated: Date
 
-    var coordinate: CLLocationCoordinate2D { .init(latitude: latitude, longitude: longitude) }
+    var coordinate: CLLocationCoordinate2D? {
+        guard let lat = latitude, let lon = longitude else { return nil }
+        return .init(latitude: lat, longitude: lon)
+    }
     
     enum Status: String, Codable {
         case dedicated = "dedicated"
