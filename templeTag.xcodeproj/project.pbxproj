@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B72E9828D500AC260F /* TempleClient.swift */; };
 		BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B92E9828F900AC260F /* TempleModel.swift */; };
-		BD42542E2E978D3700ECF06A /* TempleTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42542D2E978D3700ECF06A /* TempleTagApp.swift */; };
 		BD4254342E978D3800ECF06A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4254332E978D3800ECF06A /* Assets.xcassets */; };
 		BD4254402E978D3800ECF06A /* templeTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42543F2E978D3800ECF06A /* templeTagTests.swift */; };
 		BD42544A2E978D3800ECF06A /* templeTagUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254492E978D3800ECF06A /* templeTagUITests.swift */; };
@@ -21,6 +20,7 @@
 		BD4254692E97900900ECF06A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254682E97900700ECF06A /* HomeView.swift */; };
 		BD42546B2E9790AE00ECF06A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */; };
 		BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD4254722E9793AB00ECF06A /* LocationAuth.swift */; };
+		BD5C53352EA551C9005C819B /* TempleTagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5C53342EA551C4005C819B /* TempleTagApp.swift */; };
 		BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */; };
 		BD626A012E99410000FA087C /* MapsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A002E9940F900FA087C /* MapsMainView.swift */; };
 		BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A022E9942BA00FA087C /* MapsViewModel.swift */; };
@@ -63,7 +63,6 @@
 		BD2598B72E9828D500AC260F /* TempleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleClient.swift; sourceTree = "<group>"; };
 		BD2598B92E9828F900AC260F /* TempleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleModel.swift; sourceTree = "<group>"; };
 		BD42542A2E978D3700ECF06A /* templeTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = templeTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD42542D2E978D3700ECF06A /* TempleTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleTagApp.swift; sourceTree = "<group>"; };
 		BD4254332E978D3800ECF06A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BD4254352E978D3800ECF06A /* templeTag.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = templeTag.entitlements; sourceTree = "<group>"; };
 		BD4254362E978D3800ECF06A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +78,7 @@
 		BD4254682E97900700ECF06A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD4254722E9793AB00ECF06A /* LocationAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAuth.swift; sourceTree = "<group>"; };
+		BD5C53342EA551C4005C819B /* TempleTagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleTagApp.swift; sourceTree = "<group>"; };
 		BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnMap.swift; sourceTree = "<group>"; };
 		BD626A002E9940F900FA087C /* MapsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsMainView.swift; sourceTree = "<group>"; };
 		BD626A022E9942BA00FA087C /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
@@ -247,8 +247,6 @@
 		BD42546F2E97931100ECF06A /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				BD6ACDE72E9D5F3F0021C482 /* Model */,
-				BD6ACDE62E9D5F370021C482 /* ViewModel */,
 				BD6ACDE82E9D5F440021C482 /* View */,
 			);
 			path = Search;
@@ -257,10 +255,10 @@
 		BD4254702E97932B00ECF06A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD5C53342EA551C4005C819B /* TempleTagApp.swift */,
 				BDB4396F2EA4BA4800806775 /* AuthButton.swift */,
 				BDB4396D2EA4B2B800806775 /* AuthSheetView.swift */,
 				BD42545A2E978ECE00ECF06A /* MainTabView.swift */,
-				BD42542D2E978D3700ECF06A /* TempleTagApp.swift */,
 				BD42546A2E9790AE00ECF06A /* LaunchScreen.storyboard */,
 			);
 			path = View;
@@ -308,20 +306,6 @@
 				BD4254622E978F9600ECF06A /* ProfileView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		BD6ACDE62E9D5F370021C482 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		BD6ACDE72E9D5F3F0021C482 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		BD6ACDE82E9D5F440021C482 /* View */ = {
@@ -495,11 +479,11 @@
 				BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */,
 				BD626A012E99410000FA087C /* MapsMainView.swift in Sources */,
 				BDFA7EB42E9E254D006A9577 /* AuthViewModel.swift in Sources */,
-				BD42542E2E978D3700ECF06A /* TempleTagApp.swift in Sources */,
 				BDB439702EA4BA4B00806775 /* AuthButton.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
 				BD6ACDDF2E9D51A60021C482 /* UserDataClasses.swift in Sources */,
 				BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */,
+				BD5C53352EA551C9005C819B /* TempleTagApp.swift in Sources */,
 				BDB4396E2EA4B2BA00806775 /* AuthSheetView.swift in Sources */,
 				BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */,
 				BD4254652E978FA900ECF06A /* AllTemplesMapView.swift in Sources */,
