@@ -37,6 +37,10 @@ final class ProfileViewModel: ObservableObject {
     // Goal
     @Published var currentGoal: Goal = .init(label: "Set a goal", current: 0, target: 0)
     
+    // Editor
+    @Published var isEditing: Bool = false
+    @Published var editDraft: ProfileDraft = .init()
+    
     // Handlers
     var onEditProfile: (() -> Void)?
     var onToggleNotifications: (() -> Void)?
@@ -50,5 +54,39 @@ final class ProfileViewModel: ObservableObject {
     var progressFraction: CGFloat {
         guard totalTemples > 0 else { return 0 }
         return CGFloat(min(1.0, max(0.0, Double(totalVisited) / Double(totalTemples))))
+    }
+    
+    init() {
+        // Wire up the edit button handler by default
+        self.onEditProfile = { [weak self] in
+            self?.beginEditing()
+        }
+    }
+    
+    // MARK: - Editing
+    func beginEditing() {
+        // Seed the draft from current values
+        editDraft = ProfileDraft(
+            displayName: displayName,
+            homeTemple: homeTemple
+        )
+        isEditing = true
+    }
+
+    func applyDraft() {
+        // Basic validation: trim name
+        let trimmedName = editDraft.displayName.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !trimmedName.isEmpty {
+            displayName = trimmedName
+            // Update initials from displayName (first letters of up to two words)
+            let parts = trimmedName.split(separator: " ")
+            let first = parts.first?.first.map(String.init) ?? ""
+            let second = parts.dropFirst().first?.first.map(String.init) ?? ""
+            let candidate = (first + second).uppercased()
+            initials = candidate.isEmpty ? "??" : candidate
+        }
+        homeTemple = editDraft.homeTemple.trimmingCharacters(in: .whitespacesAndNewlines)
+        isEditing = false
+        // TODO: Persist changes to storage if applicable
     }
 }

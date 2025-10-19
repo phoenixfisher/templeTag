@@ -32,6 +32,28 @@ struct ProfileView: View {
             .background(.background)
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $vm.isEditing) {
+                // Simple inline editor without creating a new file
+                NavigationStack {
+                    Form {
+                        Section(header: Text("Profile")) {
+                            TextField("Display Name", text: $vm.editDraft.displayName)
+                            TextField("Home Temple", text: $vm.editDraft.homeTemple)
+                        }
+                    }
+                    .navigationTitle("Edit Profile")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel") { vm.isEditing = false }
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Save") { vm.applyDraft() }
+                                .disabled(vm.editDraft.displayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                        }
+                    }
+                }
+            }
         }
     }
     
