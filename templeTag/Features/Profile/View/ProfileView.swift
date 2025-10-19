@@ -69,8 +69,7 @@ struct ProfileView: View {
                     } else {
                         Button(action: { vm.onSignIn?() }) {
                             HStack(spacing: 8) {
-                                Image(systemName: "g.circle.fill")
-                                Text("Sign in with Google")
+                                Text("Sign in to an account")
                                     .fontWeight(.semibold)
                             }
                             .frame(maxWidth: .infinity, alignment: .center)

@@ -11,6 +11,7 @@ import FirebaseAuth
 
 struct MainTabView: View {
     @StateObject private var authVM = AuthViewModel()
+    @StateObject private var authRouter = AuthRouter()
     @StateObject private var profileVM = ProfileViewModel()
     
     var body: some View {
@@ -35,21 +36,43 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person")
                 }
         }
-        .onAppear {
-            // Signing in
-            profileVM.onSignIn = {
-                guard let presenter = UIApplication.shared.connectedScenes
-                    .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
-                    .first else { return }
-                withAnimation(.easeInOut) { profileVM.isLoading = true }
-                Task {
-                    do {
-                        try await authVM.signInWithGoogle(presenting: presenter)
-                    } catch {
-                        print("Sign-in error:", error)
+        .fullScreenCover(isPresented: $authRouter.showAuthSheet) {
+            AuthSheetView(
+                isLoading: $profileVM.isLoading,
+                onApple: {
+                    
+                },
+                onGoogle: {
+                    guard let presenter = UIApplication.shared.connectedScenes
+                        .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
+                        .first else { return }
+                    withAnimation(.easeInOut) { profileVM.isLoading = true }
+                    Task {
+                        do {
+                            try await authVM.signInWithGoogle(presenting: presenter)
+                        } catch {
+                            print("Sign-in error:", error)
+                        }
+                        profileVM.isLoading = false
                     }
-                    profileVM.isLoading = false
+                },
+                onSignUp: {
+                    
+                },
+                onLogIn: {
+                    
                 }
+            )
+            .presentationDetents([.large])
+            .interactiveDismissDisabled()
+        }
+        .onAppear {
+            profileVM.onSignIn = {
+                withAnimation(.easeInOut) { authRouter.showAuthSheet = true }
+            }
+            
+            if authVM.user == nil {
+                authRouter.showAuthSheet = true
             }
             
             // Signing out
@@ -64,6 +87,9 @@ struct MainTabView: View {
                 let initials = parts.prefix(2).compactMap { $0.first.map(String.init) }.joined()
                 profileVM.initials = initials.uppercased()
             }
+            
+            // Update boolean
+            authRouter.showAuthSheet = u == nil ? true : false
         }
     }
 }
