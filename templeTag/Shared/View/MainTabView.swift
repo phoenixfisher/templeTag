@@ -31,7 +31,7 @@ struct MainTabView: View {
                     Label("Map", systemImage: "map")
                 }
             
-            ProfileView(vm: profileVM)
+            ProfileView()
                 .tabItem {
                     Label("Profile", systemImage: "person")
                 }
@@ -81,8 +81,11 @@ struct MainTabView: View {
         .onChange(of: authVM.user?.uid) {
             // Keep ProfileViewModel in sync with auth state
             let u = authVM.user
+            
+            // Assign name
             profileVM.displayName = u?.displayName ?? u?.email ?? ""
-            if let name = u?.displayName {
+            // Assign initials
+            if let name = u?.displayName, !name.isEmpty {
                 let parts = name.split(separator: " ")
                 let initials = parts.prefix(2).compactMap { $0.first.map(String.init) }.joined()
                 profileVM.initials = initials.uppercased()

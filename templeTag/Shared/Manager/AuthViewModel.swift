@@ -15,6 +15,8 @@ final class AuthViewModel: ObservableObject {
     @Published var user: User?
     private var handle: AuthStateDidChangeListenerHandle?
     
+    var userId: String? { user?.uid }
+    
     init() {
         handle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
             self?.user = user

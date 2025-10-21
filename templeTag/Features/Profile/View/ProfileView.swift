@@ -9,11 +9,8 @@ import SwiftUI
 import CoreGraphics
 
 struct ProfileView: View {
-    @StateObject private var vm: ProfileViewModel
-    
-    init(vm: ProfileViewModel) {
-        _vm = StateObject(wrappedValue: vm)
-    }
+    @EnvironmentObject var authVM: AuthViewModel
+    @StateObject private var vm = ProfileViewModel()
     
     var body: some View {
         NavigationStack {
@@ -32,26 +29,25 @@ struct ProfileView: View {
             .background(.background)
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                vm.userId = authVM.userId ?? ""
+            }
+            .onChange(of: authVM.userId) { _, newId in
+                vm.userId = newId ?? ""
+            }
             .sheet(isPresented: $vm.isEditing) {
-                // Simple inline editor without creating a new file
-                NavigationStack {
-                    Form {
-                        Section(header: Text("Profile")) {
-                            TextField("Display Name", text: $vm.editDraft.displayName)
-                            TextField("Home Temple", text: $vm.editDraft.homeTemple)
-                        }
+                if let userId = authVM.userId {
+                    NavigationStack {
+                        EditProfileView(vm: vm, userId: userId)
                     }
-                    .navigationTitle("Edit Profile")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .cancellationAction) {
-                            Button("Cancel") { vm.isEditing = false }
-                        }
-                        ToolbarItem(placement: .confirmationAction) {
-                            Button("Save") { vm.applyDraft() }
-                                .disabled(vm.editDraft.displayName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
-                        }
+                } else {
+                    VStack(spacing: 12) {
+                        Text("Please sign in to edit your profile.")
+                            .font(.headline)
+                        Button("Sign in") { vm.onSignIn?() }
+                            .buttonStyle(.borderedProminent)
                     }
+                    .padding()
                 }
             }
         }
@@ -65,7 +61,7 @@ struct ProfileView: View {
             SectionHeader(title: "Account")
             
             // Not logged in
-            if vm.displayName.isEmpty {
+            if authVM.userId == nil {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("You're not signed in.")
                         .font(.headline)
@@ -300,7 +296,7 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(vm: ProfileViewModel())
+    ProfileView()
         .tint(.primary)
         .background(Color(.systemGroupedBackground))
 }

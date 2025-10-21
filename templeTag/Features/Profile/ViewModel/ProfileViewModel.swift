@@ -10,6 +10,8 @@ import Combine
 
 final class ProfileViewModel: ObservableObject {
     // Display
+    @Published var userId: String = ""
+    @Published var avatarImage: UIImage? = nil
     @Published var displayName: String = ""
     @Published var initials: String = "??"
     @Published var avatar: Image? = nil
@@ -74,7 +76,11 @@ final class ProfileViewModel: ObservableObject {
     }
 
     func applyDraft() {
-        // Basic validation: trim name
+        // Update image
+        if let data = try? LocalAvatarStore.shared.loadAvatarJPEG(userId: userId), let img = UIImage(data: data) {
+            avatarImage = img
+        }
+        // Update name
         let trimmedName = editDraft.displayName.trimmingCharacters(in: .whitespacesAndNewlines)
         if !trimmedName.isEmpty {
             displayName = trimmedName
@@ -85,6 +91,7 @@ final class ProfileViewModel: ObservableObject {
             let candidate = (first + second).uppercased()
             initials = candidate.isEmpty ? "??" : candidate
         }
+        // Update home temple
         homeTemple = editDraft.homeTemple.trimmingCharacters(in: .whitespacesAndNewlines)
         isEditing = false
         // TODO: Persist changes to storage if applicable
