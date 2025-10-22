@@ -34,5 +34,17 @@ final class AuthViewModel: ObservableObject {
         _ = try await Auth.auth().signIn(with: cred)
     }
     
-    func signOut() { try? Auth.auth().signOut() }
+    func signIn() {
+        AuthRouter().showAuthSheet = true
+    }
+    
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            self.user = nil
+            GIDSignIn.sharedInstance.signOut()
+        } catch {
+            print("Sign out failed:", error.localizedDescription)
+        }
+    }
 }

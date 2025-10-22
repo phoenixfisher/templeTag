@@ -78,21 +78,18 @@ struct MainTabView: View {
             // Signing out
             profileVM.onSignOut = { authVM.signOut() }
         }
-        .onChange(of: authVM.user?.uid) {
-            // Keep ProfileViewModel in sync with auth state
-            let u = authVM.user
-            
+        .onChange(of: authVM.user) { _, user in
             // Assign name
-            profileVM.displayName = u?.displayName ?? u?.email ?? ""
+            profileVM.displayName = user?.displayName ?? user?.email ?? ""
             // Assign initials
-            if let name = u?.displayName, !name.isEmpty {
+            if let name = user?.displayName, !name.isEmpty {
                 let parts = name.split(separator: " ")
                 let initials = parts.prefix(2).compactMap { $0.first.map(String.init) }.joined()
                 profileVM.initials = initials.uppercased()
             }
             
             // Update boolean
-            authRouter.showAuthSheet = u == nil ? true : false
+            authRouter.showAuthSheet = user == nil ? true : false
         }
     }
 }

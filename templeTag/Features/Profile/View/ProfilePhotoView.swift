@@ -45,22 +45,23 @@ struct ProfilePhotoView: View {
             }
             
             HStack(spacing: 12) {
-                Button("Save Locally") {
+                Button("Save") {
                     try? vm.saveLocally(userId: userId)
                 }
                 .buttonStyle(.bordered)
                 
-                Button {
-                    Task { await vm.upload(userId: userId) }
-                } label: {
-                    if vm.isUploading {
-                        ProgressView()
-                    } else {
-                        Text("Upload")
-                    }
-                }
-                .buttonStyle(.borderedProminent)
-                .disabled(vm.uiImage == nil || vm.isUploading)
+                // TODO: Implement functionality
+//                Button {
+//                    Task { await vm.upload(userId: userId) }
+//                } label: {
+//                    if vm.isUploading {
+//                        ProgressView()
+//                    } else {
+//                        Text("Upload")
+//                    }
+//                }
+//                .buttonStyle(.borderedProminent)
+//                .disabled(vm.uiImage == nil || vm.isUploading)
             }
             
             if let err = vm.error {

@@ -27,14 +27,15 @@ final class ProfilePhotoViewModel: ObservableObject {
         try LocalAvatarStore.shared.saveAvatarJPEG(data: data, userId: userId)
     }
     
-    func upload(userId: String) async {
-        guard let data = uiImage?.jpegData(compressionQuality: 0.9) else { return }
-        isUploading = true
-        defer { isUploading = false }
-        do {
-            try await Task.sleep(nanoseconds: 400_000_000)
-        } catch {
-            self.error = error.localizedDescription
-        }
-    }
+    // TODO: Update to db
+//    func upload(userId: String) async {
+//        guard let data = uiImage?.jpegData(compressionQuality: 0.9) else { return }
+//        isUploading = true
+//        defer { isUploading = false }
+//        do {
+//            try await Task.sleep(nanoseconds: 400_000_000)
+//        } catch {
+//            self.error = error.localizedDescription
+//        }
+//    }
 }

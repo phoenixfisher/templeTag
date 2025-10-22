@@ -61,7 +61,7 @@ struct ProfileView: View {
             SectionHeader(title: "Account")
             
             // Not logged in
-            if authVM.userId == nil {
+            if authVM.user == nil {
                 VStack(alignment: .leading, spacing: 12) {
                     Text("You're not signed in.")
                         .font(.headline)
@@ -277,19 +277,21 @@ struct ProfileView: View {
                     .shadow(radius: 4, y: 2)
             )
             
-            // Sign out button
-            if !vm.displayName.isEmpty {
-                Button(action: { vm.onSignOut?() }) {
-                    HStack(spacing: 8) {
-                        Image(systemName: "rectangle.portrait.and.arrow.right")
-                        Text("Sign Out")
-                            .fontWeight(.semibold)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
+            // Sign in/out button with respective icons and functions
+            Button(action: {
+                authVM.user != nil ? authVM.signOut() : vm.onSignIn?()
+            }) {
+                HStack(spacing: 8) {
+                    Image(systemName: (
+                        authVM.user != nil ? "rectangle.portrait.and.arrow.right" : "rectangle.portrait.and.arrow.forward"
+                    ))
+                    Text(authVM.user != nil ? "Sign Out" : "Sign In")
+                        .fontWeight(.semibold)
                 }
-                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
             }
+            .frame(maxWidth: .infinity, alignment: .center)
         }
         .padding(.bottom, 24)
     }
