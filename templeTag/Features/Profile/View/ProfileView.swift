@@ -10,7 +10,14 @@ import CoreGraphics
 
 struct ProfileView: View {
     @EnvironmentObject var authVM: AuthViewModel
+    @EnvironmentObject var authRouter: AuthRouter
     @StateObject private var vm = ProfileViewModel()
+    
+    private func showAuthSheet() {
+        withAnimation(.easeInOut) {
+            authRouter.showAuthSheet = true
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -44,7 +51,7 @@ struct ProfileView: View {
                     VStack(spacing: 12) {
                         Text("Please sign in to edit your profile.")
                             .font(.headline)
-                        Button("Sign in") { vm.onSignIn?() }
+                        Button("Sign in") { showAuthSheet() }
                             .buttonStyle(.borderedProminent)
                     }
                     .padding()
@@ -85,7 +92,7 @@ struct ProfileView: View {
                                 .shadow(radius: 4, y: 2)
                         )
                     } else {
-                        Button(action: { vm.onSignIn?() }) {
+                        Button(action: { showAuthSheet() }) {
                             HStack(spacing: 8) {
                                 Text("Sign in to an account")
                                     .fontWeight(.semibold)
@@ -279,12 +286,12 @@ struct ProfileView: View {
             
             // Sign in/out button with respective icons and functions
             Button(action: {
-                authVM.user != nil ? authVM.signOut() : vm.onSignIn?()
+                authVM.user != nil ? authVM.signOut() : showAuthSheet()
             }) {
                 HStack(spacing: 8) {
-                    Image(systemName: (
-                        authVM.user != nil ? "rectangle.portrait.and.arrow.right" : "rectangle.portrait.and.arrow.forward"
-                    ))
+                    if authVM.user != nil {
+                        Image(systemName: "rectangle.portrait.and.arrow.right")
+                    }
                     Text(authVM.user != nil ? "Sign Out" : "Sign In")
                         .fontWeight(.semibold)
                 }

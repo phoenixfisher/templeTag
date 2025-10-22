@@ -34,10 +34,6 @@ final class AuthViewModel: ObservableObject {
         _ = try await Auth.auth().signIn(with: cred)
     }
     
-    func signIn() {
-        AuthRouter().showAuthSheet = true
-    }
-    
     func signOut() {
         do {
             try Auth.auth().signOut()
