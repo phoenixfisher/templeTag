@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreGraphics
+import FirebaseAuth
 
 struct ProfileView: View {
     @EnvironmentObject var authVM: AuthViewModel
@@ -116,11 +117,11 @@ struct ProfileView: View {
             // Logged in
             } else {
                 HStack(alignment: .center, spacing: 16) {
-                    Avatar(initials: vm.initials, image: vm.avatar)
+                    Avatar(initials: vm.getInitials(name: authVM.user?.displayName ?? "Your Name"), image: vm.avatar)
                         .frame(width: 72, height: 72)
                     
                     VStack(alignment: .leading, spacing: 6) {
-                        Text(vm.displayName.isEmpty ? "Your Name" : vm.displayName)
+                        Text(authVM.user?.displayName ?? "Your Name")
                             .font(.title2.weight(.semibold))
                         Label(vm.homeTemple.isEmpty ? "Home Temple" : vm.homeTemple, systemImage: "house.fill")
                             .font(.subheadline)

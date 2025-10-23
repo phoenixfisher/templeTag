@@ -37,27 +37,11 @@ struct MainTabView: View {
                 }
         }
         .fullScreenCover(isPresented: $authRouter.showAuthSheet) {
-            AuthSheetView(
-                isLoading: $isAuthLoading,
-                onApple: { },
-                onGoogle: {
-                    guard let presenter = UIApplication.shared.connectedScenes
-                        .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
-                        .first else { return }
-                    withAnimation(.easeInOut) { isAuthLoading = true }
-                    Task {
-                        do {
-                            try await authVM.signInWithGoogle(presenting: presenter)
-                        } catch { print("Sign-in error:", error) }
-                        isAuthLoading = false
-                    }
-                },
-                onSignUp: { },
-                onLogIn: { }
-            )
-            .presentationDetents([.large])
-            .interactiveDismissDisabled()
+            AuthSheetView()
+                .environmentObject(authVM)
+                .environmentObject(authRouter)
         }
+        .interactiveDismissDisabled()
         .onAppear {
             if authVM.user == nil {
                 authRouter.showAuthSheet = true

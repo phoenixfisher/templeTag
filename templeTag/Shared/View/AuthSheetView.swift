@@ -11,12 +11,9 @@ import GoogleSignIn
 struct AuthSheetView: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
-    @Binding var isLoading: Bool
-    
-    var onApple: () -> Void = { }
-    var onGoogle: () -> Void = { }
-    var onSignUp: () -> Void = { }
-    var onLogIn: () -> Void = { }
+    @EnvironmentObject var authVM: AuthViewModel
+    @EnvironmentObject var authRouter: AuthRouter
+    @State private var isAuthLoading: Bool = false
     
     var body: some View {
         ZStack {
@@ -54,36 +51,10 @@ struct AuthSheetView: View {
                 Spacer()
                 // Auth buttons
                 VStack(spacing: 10) {
-                    // Apple
-                    Button(action: onApple) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "apple.logo")
-                                .offset(y: -2)
-                            Text("Continue with Apple")
-                        }
-                    }
-                    .buttonStyle(AuthButton(tint: .white, textColor: .black))
-                    
-                    // Google
-                    Button(action: onGoogle) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "g.circle")
-                            Text("Continue with Google")
-                        }
-                    }
-                    .buttonStyle(AuthButton(tint: .blue))
-                    
-                    // Sign up
-                    Button(action: onSignUp) {
-                        Text("Sign Up")
-                    }
-                    .buttonStyle(AuthButton())
-                    
-                    // Log in
-                    Button(action: onLogIn) {
-                        Text("Log In")
-                    }
-                    .buttonStyle(AuthButton(outlined: true))
+                    onApple
+                    onGoogle
+                    onSignUp
+                    onLogIn
                 }
                 .padding(.horizontal)
                 .padding(.top)
@@ -93,7 +64,7 @@ struct AuthSheetView: View {
             }
             
             // Loading overlay
-            if isLoading {
+            if isAuthLoading {
                 Color.black.opacity(0.35).ignoresSafeArea()
                 ProgressView()
                     .progressViewStyle(.circular)
@@ -101,16 +72,71 @@ struct AuthSheetView: View {
                     .tint(.white)
             }
         }
-        .interactiveDismissDisabled(isLoading)
+        .interactiveDismissDisabled(isAuthLoading)
         .ignoresSafeArea(edges: .bottom)
+    }
+    
+    private var onApple: some View {
+        Button {
+            
+        } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "apple.logo")
+                    .offset(y: -2)
+                Text("Continue with Apple")
+            }
+        }
+        .buttonStyle(AuthButton(tint: .white, textColor: .black))
+    }
+    
+    private var onGoogle: some View {
+        Button {
+            guard let presenter = UIApplication.shared.connectedScenes
+                .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
+                .first else { return }
+            withAnimation(.easeInOut) { isAuthLoading = true }
+            Task {
+                do {
+                    try await authVM.signInWithGoogle(presenting: presenter)
+                } catch { print("Sign-in error:", error) }
+                isAuthLoading = false
+            }
+        } label: {
+            HStack(spacing: 8) {
+                Image(systemName: "g.circle")
+                Text("Continue with Google")
+            }
+        }
+        .buttonStyle(AuthButton(tint: .blue))
+    }
+    
+    private var onSignUp: some View {
+        Button {
+            
+        } label: {
+            Text("Sign Up")
+        }
+        .buttonStyle(AuthButton())
+    }
+    
+    private var onLogIn: some View {
+        Button {
+            
+        } label: {
+            Text("Log In")
+        }
+        .buttonStyle(AuthButton(outlined: true))
     }
 }
 
 #Preview {
     struct PreviewWrapper: View {
-        @State private var isLoading = false
+        @StateObject private var authVM = AuthViewModel()
+        @StateObject private var authRouter = AuthRouter()
         var body: some View {
-            AuthSheetView(isLoading: $isLoading)
+            AuthSheetView()
+                .environmentObject(authVM)
+                .environmentObject(authRouter)
         }
     }
     return PreviewWrapper()

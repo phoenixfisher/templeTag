@@ -83,15 +83,19 @@ final class ProfileViewModel: ObservableObject {
         if !trimmedName.isEmpty {
             displayName = trimmedName
             // Update initials from displayName (first letters of up to two words)
-            let parts = trimmedName.split(separator: " ")
-            let first = parts.first?.first.map(String.init) ?? ""
-            let second = parts.dropFirst().first?.first.map(String.init) ?? ""
-            let candidate = (first + second).uppercased()
-            initials = candidate.isEmpty ? "??" : candidate
+            initials = getInitials(name: displayName)
         }
         // Update home temple
         homeTemple = editDraft.homeTemple.trimmingCharacters(in: .whitespacesAndNewlines)
         isEditing = false
         // TODO: Persist changes to storage if applicable
+    }
+    
+    func getInitials(name: String) -> String {
+        let parts = name.split(separator: " ")
+        let first = parts.first?.first.map(String.init) ?? ""
+        let second = parts.dropFirst().first?.first.map(String.init) ?? ""
+        let candidate = (first + second).uppercased()
+        return candidate.isEmpty ? "??" : candidate
     }
 }
