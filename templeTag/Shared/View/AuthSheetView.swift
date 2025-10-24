@@ -78,27 +78,33 @@ struct AuthSheetView: View {
     }
     
     private var onApple: some View {
-        SignInWithAppleButton(.signIn, onRequest: { request in
-            request.requestedScopes = [.fullName, .email]
-        },
-        onCompletion: { result in
-            switch result {
-            case .success(let authResults):
-                if let cred = authResults.credential as? ASAuthorizationAppleIDCredential {
-                    Task {
-                        withAnimation(.easeInOut) { isAuthLoading = true }
-                        do {
-                            try await authVM.signInWithApple(credential: cred)
-                        } catch {
-                            print("Apple sign-in failed:", error)
+        SignInWithAppleButton(.signIn,
+            onRequest: { request in
+                authVM.prepareAppleSignIn(request)
+            },
+            onCompletion: { result in
+                switch result {
+                case .success(let authResults):
+                    if let cred = authResults.credential as? ASAuthorizationAppleIDCredential {
+                        Task {
+                            withAnimation(.easeInOut) { isAuthLoading = true }
+                            do {
+                                try await authVM.signInWithApple(credential: cred)
+                            } catch {
+                                print("Apple sign-in failed:", error)
+                            }
+                            isAuthLoading = false
                         }
-                        isAuthLoading = false
+                    }
+                case .failure(let error):
+                    if let asError = error as? ASAuthorizationError {
+                        print("Authorization failed (\(asError.errorCode)) [\(asError.code)]:", asError.localizedDescription)
+                    } else {
+                        let nsError = error as NSError
+                        print("Authorization failed domain=\(nsError.domain) code=\(nsError.code):", nsError.localizedDescription)
                     }
                 }
-            case .failure(let error):
-                print("Authorization failed:", error.localizedDescription)
-            }
-        })
+            })
         .signInWithAppleButtonStyle(colorScheme == .dark ? .black : .white)
         .frame(height: 52)
         .cornerRadius(16)
