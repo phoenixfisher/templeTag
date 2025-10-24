@@ -12,7 +12,7 @@ struct AuthButton: ButtonStyle {
     var font: Font = .title3
     var tint: Color = Color(white: 0.25)
     var textColor: Color = .white
-    var radius: CGFloat = 16
+    var cornerRadius: CGFloat = 16
     var lineWidth: CGFloat = 3
     var minHeight: CGFloat = 52
 
@@ -21,11 +21,11 @@ struct AuthButton: ButtonStyle {
             .font(font)
             .frame(maxWidth: .infinity, minHeight: minHeight)
             .background(
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                     .fill(outlined ? .clear : tint)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                     .strokeBorder(
                         outlined ? tint : .primary.opacity(0.08),
                         lineWidth: outlined ? lineWidth : 1

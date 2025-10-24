@@ -7,6 +7,7 @@
 
 import SwiftUI
 import GoogleSignIn
+import AuthenticationServices
 
 struct AuthSheetView: View {
     @Environment(\.dismiss) private var dismiss
@@ -77,16 +78,30 @@ struct AuthSheetView: View {
     }
     
     private var onApple: some View {
-        Button {
-            
-        } label: {
-            HStack(spacing: 8) {
-                Image(systemName: "apple.logo")
-                    .offset(y: -2)
-                Text("Continue with Apple")
+        SignInWithAppleButton(.signIn, onRequest: { request in
+            request.requestedScopes = [.fullName, .email]
+        },
+        onCompletion: { result in
+            switch result {
+            case .success(let authResults):
+                if let cred = authResults.credential as? ASAuthorizationAppleIDCredential {
+                    Task {
+                        withAnimation(.easeInOut) { isAuthLoading = true }
+                        do {
+                            try await authVM.signInWithApple(credential: cred)
+                        } catch {
+                            print("Apple sign-in failed:", error)
+                        }
+                        isAuthLoading = false
+                    }
+                }
+            case .failure(let error):
+                print("Authorization failed:", error.localizedDescription)
             }
-        }
-        .buttonStyle(AuthButton(tint: .white, textColor: .black))
+        })
+        .signInWithAppleButtonStyle(colorScheme == .dark ? .black : .white)
+        .frame(height: 52)
+        .cornerRadius(16)
     }
     
     private var onGoogle: some View {
