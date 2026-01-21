@@ -46,7 +46,7 @@ struct ProfileView: View {
             .sheet(isPresented: $vm.isEditing) {
                 if let userId = authVM.userId {
                     NavigationStack {
-                        EditProfileView(vm: vm, userId: userId)
+                        EmptyView()
                     }
                 } else {
                     VStack(spacing: 12) {
@@ -117,7 +117,7 @@ struct ProfileView: View {
             // Logged in
             } else {
                 HStack(alignment: .center, spacing: 16) {
-                    Avatar(initials: vm.getInitials(name: authVM.user?.displayName ?? "Your Name"), image: vm.avatar)
+                    Avatar(image: vm.avatar)
                         .frame(width: 72, height: 72)
                     
                     VStack(alignment: .leading, spacing: 6) {
@@ -303,10 +303,4 @@ struct ProfileView: View {
         }
         .padding(.bottom, 24)
     }
-}
-
-#Preview {
-    ProfileView()
-        .tint(.primary)
-        .background(Color(.systemGroupedBackground))
 }

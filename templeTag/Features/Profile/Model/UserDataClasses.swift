@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct ProfileDraft {
-    var displayName: String = ""
-    var homeTemple: String = ""
-}
-
 struct Visit: Identifiable, Hashable {
     let id = UUID()
     let templeName: String

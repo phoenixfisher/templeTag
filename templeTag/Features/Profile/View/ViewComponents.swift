@@ -9,7 +9,6 @@ import SwiftUI
 
 // Picture or initials card
 struct Avatar: View {
-    var initials: String
     var image: Image?
     
     var body: some View {
@@ -19,22 +18,10 @@ struct Avatar: View {
                     .resizable()
                     .scaledToFill()
             } else {
-                Text(initials)
-                    .font(.title2.weight(.bold))
-                    .foregroundStyle(.primary)
-                    .minimumScaleFactor(0.6)
-                    .padding(8)
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .background(
-                        LinearGradient(colors: [.teal.opacity(0.25), .blue.opacity(0.25)],
-                                       startPoint: .topLeading, endPoint: .bottomTrailing)
-                    )
+                Image(systemName: "person.fill")
             }
         }
-        .clipShape(RoundedRectangle(cornerRadius: 18))
-        .overlay(
-            RoundedRectangle(cornerRadius: 18).strokeBorder(.quaternary, lineWidth: 1)
-        )
+        .clipShape(Circle())
         .shadow(radius: 3, y: 1)
     }
 }

@@ -9,11 +9,7 @@
 /* Begin PBXBuildFile section */
 		BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B72E9828D500AC260F /* TempleClient.swift */; };
 		BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B92E9828F900AC260F /* TempleModel.swift */; };
-		BD2EED552EA7583D009C6160 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED542EA7583A009C6160 /* EditProfileView.swift */; };
-		BD2EED572EA7591A009C6160 /* ProfilePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED562EA75914009C6160 /* ProfilePhotoViewModel.swift */; };
 		BD2EED592EA75A1D009C6160 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED582EA75A1A009C6160 /* Extensions.swift */; };
-		BD2EED5B2EA75D1B009C6160 /* LocalAvatarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED5A2EA75D17009C6160 /* LocalAvatarStore.swift */; };
-		BD2EED5D2EA75EF5009C6160 /* ProfilePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED5C2EA75EEC009C6160 /* ProfilePhotoView.swift */; };
 		BD2EED5F2EA765E2009C6160 /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED5E2EA765DC009C6160 /* CameraPicker.swift */; };
 		BD4254342E978D3800ECF06A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4254332E978D3800ECF06A /* Assets.xcassets */; };
 		BD4254402E978D3800ECF06A /* templeTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD42543F2E978D3800ECF06A /* templeTagTests.swift */; };
@@ -68,11 +64,7 @@
 /* Begin PBXFileReference section */
 		BD2598B72E9828D500AC260F /* TempleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleClient.swift; sourceTree = "<group>"; };
 		BD2598B92E9828F900AC260F /* TempleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleModel.swift; sourceTree = "<group>"; };
-		BD2EED542EA7583A009C6160 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
-		BD2EED562EA75914009C6160 /* ProfilePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoViewModel.swift; sourceTree = "<group>"; };
 		BD2EED582EA75A1A009C6160 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		BD2EED5A2EA75D17009C6160 /* LocalAvatarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAvatarStore.swift; sourceTree = "<group>"; };
-		BD2EED5C2EA75EEC009C6160 /* ProfilePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePhotoView.swift; sourceTree = "<group>"; };
 		BD2EED5E2EA765DC009C6160 /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
 		BD42542A2E978D3700ECF06A /* templeTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = templeTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD4254332E978D3800ECF06A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -280,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				BD2EED5E2EA765DC009C6160 /* CameraPicker.swift */,
-				BD2EED5A2EA75D17009C6160 /* LocalAvatarStore.swift */,
 				BD2EED582EA75A1A009C6160 /* Extensions.swift */,
 				BDB439692EA4B1C800806775 /* AuthRouter.swift */,
 				BDFA7EB32E9E2549006A9577 /* AuthViewModel.swift */,
@@ -309,7 +300,6 @@
 		BD6ACDDC2E9D517D0021C482 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				BD2EED562EA75914009C6160 /* ProfilePhotoViewModel.swift */,
 				BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
@@ -318,10 +308,8 @@
 		BD6ACDDD2E9D51820021C482 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BD2EED5C2EA75EEC009C6160 /* ProfilePhotoView.swift */,
-				BD2EED542EA7583A009C6160 /* EditProfileView.swift */,
-				BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */,
 				BD4254622E978F9600ECF06A /* ProfileView.swift */,
+				BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -495,10 +483,8 @@
 				BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */,
 				BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */,
 				BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */,
-				BD2EED5D2EA75EF5009C6160 /* ProfilePhotoView.swift in Sources */,
 				BD626A012E99410000FA087C /* MapsMainView.swift in Sources */,
 				BDFA7EB42E9E254D006A9577 /* AuthViewModel.swift in Sources */,
-				BD2EED5B2EA75D1B009C6160 /* LocalAvatarStore.swift in Sources */,
 				BDB439702EA4BA4B00806775 /* AuthButton.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
 				BD6ACDDF2E9D51A60021C482 /* UserDataClasses.swift in Sources */,
@@ -509,12 +495,10 @@
 				BD4254652E978FA900ECF06A /* AllTemplesMapView.swift in Sources */,
 				BDFB530B2E9E16F700CA6CD8 /* AppDelegate.swift in Sources */,
 				BD4254692E97900900ECF06A /* HomeView.swift in Sources */,
-				BD2EED552EA7583D009C6160 /* EditProfileView.swift in Sources */,
 				BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */,
 				BD2EED592EA75A1D009C6160 /* Extensions.swift in Sources */,
 				BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */,
 				BD2EED5F2EA765E2009C6160 /* CameraPicker.swift in Sources */,
-				BD2EED572EA7591A009C6160 /* ProfilePhotoViewModel.swift in Sources */,
 				BD6ACDE12E9D52EE0021C482 /* ProfileViewModel.swift in Sources */,
 				BD42545B2E978ED000ECF06A /* MainTabView.swift in Sources */,
 			);
