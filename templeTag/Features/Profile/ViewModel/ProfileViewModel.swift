@@ -20,9 +20,9 @@ final class ProfileViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     
     // Stats
-    @Published var totalVisited: Int = 0
-    @Published var totalTemples: Int = 0
-    @Published var countriesVisited: Int = 0
+    @Published var totalVisited: Int = 30
+    @Published var totalTemples: Int = 43
+    @Published var countriesVisited: Int = 3
     
     // Activity
     @Published var lastVisit: Visit? = nil
@@ -34,10 +34,9 @@ final class ProfileViewModel: ObservableObject {
     
     // Settings
     @Published var notificationsEnabled: Bool = false
-    @Published var defaultView: DefaultView = .map
     
     // Goal
-    @Published var currentGoal: Goal = .init(label: "Set a goal", current: 0, target: 0)
+    @Published var currentGoal: Goal = .init(label: "Visit 26 temples this year", current: 5, target: 26)
     
     // Editor
     @Published var isEditing: Bool = false

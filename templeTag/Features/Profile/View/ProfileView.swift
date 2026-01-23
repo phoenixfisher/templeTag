@@ -247,9 +247,6 @@ struct ProfileView: View {
                 SettingRow(icon: "bell.badge", title: "Notifications", detail: vm.notificationsEnabled ? "On" : "Off") {
                     vm.onToggleNotifications?()
                 }
-                SettingRow(icon: "map", title: "Default View", detail: vm.defaultView.rawValue) {
-                    vm.onChangeDefaultView?()
-                }
                 SettingRow(icon: "square.and.arrow.up", title: "Export Data", detail: "CSV") {
                     vm.onExport?()
                 }

@@ -76,7 +76,3 @@ struct AllTemplesMapView: View {
         }
     }
 }
-
-#Preview {
-    AllTemplesMapView()
-}

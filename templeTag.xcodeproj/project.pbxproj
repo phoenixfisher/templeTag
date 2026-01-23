@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B72E9828D500AC260F /* TempleClient.swift */; };
-		BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B92E9828F900AC260F /* TempleModel.swift */; };
+		BD2598BA2E98290000AC260F /* Temple.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B92E9828F900AC260F /* Temple.swift */; };
 		BD2EED592EA75A1D009C6160 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED582EA75A1A009C6160 /* Extensions.swift */; };
 		BD2EED5F2EA765E2009C6160 /* CameraPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED5E2EA765DC009C6160 /* CameraPicker.swift */; };
 		BD4254342E978D3800ECF06A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4254332E978D3800ECF06A /* Assets.xcassets */; };
@@ -26,9 +26,12 @@
 		BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */; };
 		BD626A012E99410000FA087C /* MapsMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A002E9940F900FA087C /* MapsMainView.swift */; };
 		BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD626A022E9942BA00FA087C /* MapsViewModel.swift */; };
-		BD6ACDDF2E9D51A60021C482 /* UserDataClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDDE2E9D51990021C482 /* UserDataClasses.swift */; };
+		BD6ACDDF2E9D51A60021C482 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDDE2E9D51990021C482 /* Visit.swift */; };
 		BD6ACDE12E9D52EE0021C482 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */; };
 		BD6ACDE52E9D5D530021C482 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */; };
+		BDA3DEAE2F23473B000F75A1 /* AddVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEAD2F234738000F75A1 /* AddVisitView.swift */; };
+		BDA3DEB22F234879000F75A1 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEB12F234878000F75A1 /* Goal.swift */; };
+		BDA3DEB42F23488D000F75A1 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEB32F23488C000F75A1 /* Badge.swift */; };
 		BDB4396A2EA4B1CA00806775 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB439692EA4B1C800806775 /* AuthRouter.swift */; };
 		BDB4396E2EA4B2BA00806775 /* AuthSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4396D2EA4B2B800806775 /* AuthSheetView.swift */; };
 		BDB439702EA4BA4B00806775 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4396F2EA4BA4800806775 /* AuthButton.swift */; };
@@ -63,7 +66,7 @@
 
 /* Begin PBXFileReference section */
 		BD2598B72E9828D500AC260F /* TempleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleClient.swift; sourceTree = "<group>"; };
-		BD2598B92E9828F900AC260F /* TempleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleModel.swift; sourceTree = "<group>"; };
+		BD2598B92E9828F900AC260F /* Temple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temple.swift; sourceTree = "<group>"; };
 		BD2EED582EA75A1A009C6160 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BD2EED5E2EA765DC009C6160 /* CameraPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPicker.swift; sourceTree = "<group>"; };
 		BD42542A2E978D3700ECF06A /* templeTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = templeTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,9 +89,12 @@
 		BD6269FE2E993B6E00FA087C /* ShowOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOnMap.swift; sourceTree = "<group>"; };
 		BD626A002E9940F900FA087C /* MapsMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsMainView.swift; sourceTree = "<group>"; };
 		BD626A022E9942BA00FA087C /* MapsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsViewModel.swift; sourceTree = "<group>"; };
-		BD6ACDDE2E9D51990021C482 /* UserDataClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataClasses.swift; sourceTree = "<group>"; };
+		BD6ACDDE2E9D51990021C482 /* Visit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
+		BDA3DEAD2F234738000F75A1 /* AddVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitView.swift; sourceTree = "<group>"; };
+		BDA3DEB12F234878000F75A1 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		BDA3DEB32F23488C000F75A1 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
 		BDB439692EA4B1C800806775 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		BDB4396D2EA4B2B800806775 /* AuthSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSheetView.swift; sourceTree = "<group>"; };
 		BDB4396F2EA4BA4800806775 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -141,7 +147,6 @@
 		BD2598B62E9828D000AC260F /* Temples */ = {
 			isa = PBXGroup;
 			children = (
-				BD2598B92E9828F900AC260F /* TempleModel.swift */,
 				BD2598B72E9828D500AC260F /* TempleClient.swift */,
 				BDB7F4D82E9897D400CA2483 /* TempleViewModel.swift */,
 				BDB7F4E32E98BD4D00CA2483 /* TempleDetailView.swift */,
@@ -203,6 +208,7 @@
 		BD4254602E978F7900ECF06A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BDA3DEAF2F23483A000F75A1 /* Models */,
 				BD2598B62E9828D000AC260F /* Temples */,
 				BD4254712E9793A000ECF06A /* Manager */,
 				BD4254702E97932B00ECF06A /* View */,
@@ -215,6 +221,7 @@
 			children = (
 				BD42546C2E9792FD00ECF06A /* Home */,
 				BD42546F2E97931100ECF06A /* Search */,
+				BDA3DEAB2F234723000F75A1 /* AddVisit */,
 				BD42546E2E97930B00ECF06A /* Maps */,
 				BD42546D2E97930500ECF06A /* Profile */,
 			);
@@ -232,7 +239,6 @@
 		BD42546D2E97930500ECF06A /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				BD6ACDDB2E9D51760021C482 /* Model */,
 				BD6ACDDC2E9D517D0021C482 /* ViewModel */,
 				BD6ACDDD2E9D51820021C482 /* View */,
 			);
@@ -289,14 +295,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		BD6ACDDB2E9D51760021C482 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BD6ACDDE2E9D51990021C482 /* UserDataClasses.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		BD6ACDDC2E9D517D0021C482 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,6 +318,33 @@
 				BD4254662E978FFD00ECF06A /* SearchView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BDA3DEAB2F234723000F75A1 /* AddVisit */ = {
+			isa = PBXGroup;
+			children = (
+				BDA3DEAC2F234730000F75A1 /* View */,
+			);
+			path = AddVisit;
+			sourceTree = "<group>";
+		};
+		BDA3DEAC2F234730000F75A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BDA3DEAD2F234738000F75A1 /* AddVisitView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BDA3DEAF2F23483A000F75A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BD2598B92E9828F900AC260F /* Temple.swift */,
+				BD6ACDDE2E9D51990021C482 /* Visit.swift */,
+				BDA3DEB32F23488C000F75A1 /* Badge.swift */,
+				BDA3DEB12F234878000F75A1 /* Goal.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BDB7F4DB2E98B0EC00CA2483 /* View */ = {
@@ -484,17 +509,20 @@
 				BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */,
 				BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */,
 				BD626A012E99410000FA087C /* MapsMainView.swift in Sources */,
+				BDA3DEB42F23488D000F75A1 /* Badge.swift in Sources */,
 				BDFA7EB42E9E254D006A9577 /* AuthViewModel.swift in Sources */,
 				BDB439702EA4BA4B00806775 /* AuthButton.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
-				BD6ACDDF2E9D51A60021C482 /* UserDataClasses.swift in Sources */,
-				BD2598BA2E98290000AC260F /* TempleModel.swift in Sources */,
+				BD6ACDDF2E9D51A60021C482 /* Visit.swift in Sources */,
+				BDA3DEAE2F23473B000F75A1 /* AddVisitView.swift in Sources */,
+				BD2598BA2E98290000AC260F /* Temple.swift in Sources */,
 				BD5C53352EA551C9005C819B /* TempleTagApp.swift in Sources */,
 				BDB4396E2EA4B2BA00806775 /* AuthSheetView.swift in Sources */,
 				BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */,
 				BD4254652E978FA900ECF06A /* AllTemplesMapView.swift in Sources */,
 				BDFB530B2E9E16F700CA6CD8 /* AppDelegate.swift in Sources */,
 				BD4254692E97900900ECF06A /* HomeView.swift in Sources */,
+				BDA3DEB22F234879000F75A1 /* Goal.swift in Sources */,
 				BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */,
 				BD2EED592EA75A1D009C6160 /* Extensions.swift in Sources */,
 				BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */,

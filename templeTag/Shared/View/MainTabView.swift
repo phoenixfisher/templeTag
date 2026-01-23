@@ -10,48 +10,28 @@ import UIKit
 import FirebaseAuth
 
 struct MainTabView: View {
-    @StateObject private var authVM = AuthViewModel()
-    @StateObject private var authRouter = AuthRouter()
+    @EnvironmentObject var authVM: AuthViewModel
+    @EnvironmentObject var authRouter: AuthRouter
     @State private var isAuthLoading = false
     
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
+            Tab("Home", systemImage: "house") { HomeView() }
             
-            SearchView()
-                .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
-                }
+            Tab("Search", systemImage: "magnifyingglass") { SearchView() }
             
-            MapsMainView()
-                .tabItem {
-                    Label("Map", systemImage: "map")
-                }
+            Tab("Add", systemImage: "plus") { AddVisitView() }
             
-            ProfileView()
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
+            Tab("Map", systemImage: "map") { MapsMainView() }
+            
+            Tab("Profile", systemImage: "person") { ProfileView() }
         }
-        .environmentObject(authRouter)
-        .environmentObject(authVM)
         .fullScreenCover(isPresented: $authRouter.showAuthSheet) {
             AuthSheetView()
                 .environmentObject(authVM)
                 .environmentObject(authRouter)
         }
         .interactiveDismissDisabled()
-        /*
-        // Add this if you want fun pop up "Tag Your It"
-        .onAppear {
-            if authVM.user == nil {
-                authRouter.showAuthSheet = true
-            }
-        }
-        */
         .onChange(of: authVM.user) { _, user in
             authRouter.showAuthSheet = (user == nil)
         }

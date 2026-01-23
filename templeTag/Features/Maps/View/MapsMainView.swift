@@ -149,7 +149,3 @@ struct MapsMainView: View {
         }
     }
 }
-
-#Preview {
-    MapsMainView()
-}
