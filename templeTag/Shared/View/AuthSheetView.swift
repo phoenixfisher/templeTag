@@ -52,10 +52,83 @@ struct AuthSheetView: View {
                 Spacer()
                 // Auth buttons
                 VStack(spacing: 10) {
-                    onApple
-                    onGoogle
-                    onSignUp
-                    onLogIn
+                    
+                    // MARK: Apple
+                    SignInWithAppleButton(.signIn,
+                        onRequest: { request in
+                            authVM.prepareAppleSignIn(request)
+                        },
+                        onCompletion: { result in
+                            switch result {
+                            case .success(let authResults):
+                                if let cred = authResults.credential as? ASAuthorizationAppleIDCredential {
+                                    Task {
+                                        withAnimation(.easeInOut) { isAuthLoading = true }
+                                        do {
+                                            try await authVM.signInWithApple(credential: cred)
+                                        } catch {
+                                            print("Apple sign-in failed:", error)
+                                        }
+                                        isAuthLoading = false
+                                    }
+                                }
+                            case .failure(let error):
+                                if let asError = error as? ASAuthorizationError {
+                                    print("Authorization failed (\(asError.errorCode)) [\(asError.code)]:", asError.localizedDescription)
+                                } else {
+                                    let nsError = error as NSError
+                                    print("Authorization failed domain=\(nsError.domain) code=\(nsError.code):", nsError.localizedDescription)
+                                }
+                            }
+                        })
+                    .signInWithAppleButtonStyle(colorScheme == .dark ? .black : .white)
+                    .frame(height: 52)
+                    .cornerRadius(16)
+                    
+                    // MARK: Google
+                    Button {
+                        guard let presenter = UIApplication.shared.connectedScenes
+                            .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
+                            .first else { return }
+                        withAnimation(.easeInOut) { isAuthLoading = true }
+                        Task {
+                            do {
+                                try await authVM.signInWithGoogle(presenting: presenter)
+                            } catch { print("Sign-in error:", error) }
+                            isAuthLoading = false
+                        }
+                    } label: {
+                        HStack(spacing: 8) {
+                            Image(systemName: "g.circle")
+                            Text("Continue with Google")
+                        }
+                    }
+                    .buttonStyle(AuthButton(tint: .blue))
+                    
+                    /* Can add later with native account services
+                    // MARK: Native services
+                    Button {
+                        
+                    } label: {
+                        Text("Sign Up")
+                    }
+                    .buttonStyle(AuthButton())
+                    
+                    Button {
+                        
+                    } label: {
+                        Text("Log In")
+                    }
+                    .buttonStyle(AuthButton(outlined: true))
+                     */
+                    
+                    // MARK: No account
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Continue as Guest")
+                    }
+                    .buttonStyle(AuthButton(outlined: true))
                 }
                 .padding(.horizontal)
                 .padding(.top)
@@ -76,89 +149,4 @@ struct AuthSheetView: View {
         .interactiveDismissDisabled(isAuthLoading)
         .ignoresSafeArea(edges: .bottom)
     }
-    
-    private var onApple: some View {
-        SignInWithAppleButton(.signIn,
-            onRequest: { request in
-                authVM.prepareAppleSignIn(request)
-            },
-            onCompletion: { result in
-                switch result {
-                case .success(let authResults):
-                    if let cred = authResults.credential as? ASAuthorizationAppleIDCredential {
-                        Task {
-                            withAnimation(.easeInOut) { isAuthLoading = true }
-                            do {
-                                try await authVM.signInWithApple(credential: cred)
-                            } catch {
-                                print("Apple sign-in failed:", error)
-                            }
-                            isAuthLoading = false
-                        }
-                    }
-                case .failure(let error):
-                    if let asError = error as? ASAuthorizationError {
-                        print("Authorization failed (\(asError.errorCode)) [\(asError.code)]:", asError.localizedDescription)
-                    } else {
-                        let nsError = error as NSError
-                        print("Authorization failed domain=\(nsError.domain) code=\(nsError.code):", nsError.localizedDescription)
-                    }
-                }
-            })
-        .signInWithAppleButtonStyle(colorScheme == .dark ? .black : .white)
-        .frame(height: 52)
-        .cornerRadius(16)
-    }
-    
-    private var onGoogle: some View {
-        Button {
-            guard let presenter = UIApplication.shared.connectedScenes
-                .compactMap({ ($0 as? UIWindowScene)?.keyWindow?.rootViewController })
-                .first else { return }
-            withAnimation(.easeInOut) { isAuthLoading = true }
-            Task {
-                do {
-                    try await authVM.signInWithGoogle(presenting: presenter)
-                } catch { print("Sign-in error:", error) }
-                isAuthLoading = false
-            }
-        } label: {
-            HStack(spacing: 8) {
-                Image(systemName: "g.circle")
-                Text("Continue with Google")
-            }
-        }
-        .buttonStyle(AuthButton(tint: .blue))
-    }
-    
-    private var onSignUp: some View {
-        Button {
-            
-        } label: {
-            Text("Sign Up")
-        }
-        .buttonStyle(AuthButton())
-    }
-    
-    private var onLogIn: some View {
-        Button {
-            
-        } label: {
-            Text("Log In")
-        }
-        .buttonStyle(AuthButton(outlined: true))
-    }
-}
-
-#Preview {
-    struct PreviewWrapper: View {
-        @StateObject private var authVM = AuthViewModel()
-        @StateObject private var authRouter = AuthRouter()
-        var body: some View {
-            AuthSheetView()
-                .environmentObject(authVM)
-                .environmentObject(authRouter)
-        }
-    }
-    return PreviewWrapper()
 }

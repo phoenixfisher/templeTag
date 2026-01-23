@@ -35,8 +35,6 @@ struct ProfileView: View {
                 .padding(.vertical, 24)
             }
             .background(.background)
-            .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 vm.userId = authVM.userId ?? ""
             }
@@ -44,19 +42,7 @@ struct ProfileView: View {
                 vm.userId = newId ?? ""
             }
             .sheet(isPresented: $vm.isEditing) {
-                if let userId = authVM.userId {
-                    NavigationStack {
-                        EmptyView()
-                    }
-                } else {
-                    VStack(spacing: 12) {
-                        Text("Please sign in to edit your profile.")
-                            .font(.headline)
-                        Button("Sign in") { showAuthSheet() }
-                            .buttonStyle(.borderedProminent)
-                    }
-                    .padding()
-                }
+                // TODO: EditingProfileView
             }
         }
     }
@@ -66,7 +52,6 @@ struct ProfileView: View {
     // Account
     private var account: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(title: "Account")
             
             // Not logged in
             if authVM.user == nil {
@@ -90,7 +75,7 @@ struct ProfileView: View {
                         .background(
                             RoundedRectangle(cornerRadius: 24)
                                 .fill(.ultraThinMaterial)
-                                .shadow(radius: 4, y: 2)
+                                .shadow(radius: 4)
                         )
                     } else {
                         Button(action: { showAuthSheet() }) {
@@ -111,42 +96,36 @@ struct ProfileView: View {
                 .background(
                     RoundedRectangle(cornerRadius: 24)
                         .fill(.ultraThinMaterial)
-                        .shadow(radius: 4, y: 2)
+                        .shadow(radius: 4)
                 )
                 
             // Logged in
             } else {
-                HStack(alignment: .center, spacing: 16) {
+                VStack(alignment: .center, spacing: 16) {
                     Avatar(image: vm.avatar)
-                        .frame(width: 72, height: 72)
+                        .frame(width: 110, height: 110)
                     
-                    VStack(alignment: .leading, spacing: 6) {
-                        Text(authVM.user?.displayName ?? "Your Name")
+                    // Name
+                    if let name = authVM.user?.displayName, !name.isEmpty {
+                        Text(name)
                             .font(.title2.weight(.semibold))
-                        Label(vm.homeTemple.isEmpty ? "Home Temple" : vm.homeTemple, systemImage: "house.fill")
-                            .font(.subheadline)
+                    }
+                    
+                    // Home temple
+                    Label(vm.homeTemple, systemImage: "house.fill")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    
+                    if let memberSince = vm.memberSince {
+                        Text("Member since \(memberSince.formatted(.dateTime.year().month()))")
+                            .font(.footnote)
                             .foregroundStyle(.secondary)
-                        if let memberSince = vm.memberSince {
-                            Text("Member since \(memberSince.formatted(.dateTime.year().month()))")
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                        }
                     }
-                    Spacer()
-                    Button { vm.onEditProfile?() } label: {
-                        Image(systemName: "pencil")
-                            .font(.title3.weight(.semibold))
-                            .padding(10)
-                            .background(.thinMaterial, in: Circle())
+                    
+                    Button("Edit Profile") {
+                        vm.onEditProfile?()
                     }
-                    .accessibilityLabel("Edit profile")
                 }
-                .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 24)
-                        .fill(.ultraThinMaterial)
-                        .shadow(radius: 4, y: 2)
-                )
             }
         }
     }
@@ -196,7 +175,7 @@ struct ProfileView: View {
             .background(
                 RoundedRectangle(cornerRadius: 24)
                     .fill(.ultraThinMaterial)
-                    .shadow(radius: 4, y: 2)
+                    .shadow(radius: 4)
             )
         }
     }
@@ -282,7 +261,7 @@ struct ProfileView: View {
             .background(
                 RoundedRectangle(cornerRadius: 24)
                     .fill(.ultraThinMaterial)
-                    .shadow(radius: 4, y: 2)
+                    .shadow(radius: 4)
             )
             
             // Sign in/out button with respective icons and functions
@@ -301,6 +280,5 @@ struct ProfileView: View {
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
-        .padding(.bottom, 24)
     }
 }

@@ -36,17 +36,22 @@ struct MainTabView: View {
                     Label("Profile", systemImage: "person")
                 }
         }
+        .environmentObject(authRouter)
+        .environmentObject(authVM)
         .fullScreenCover(isPresented: $authRouter.showAuthSheet) {
             AuthSheetView()
                 .environmentObject(authVM)
                 .environmentObject(authRouter)
         }
         .interactiveDismissDisabled()
+        /*
+        // Add this if you want fun pop up "Tag Your It"
         .onAppear {
             if authVM.user == nil {
                 authRouter.showAuthSheet = true
             }
         }
+        */
         .onChange(of: authVM.user) { _, user in
             authRouter.showAuthSheet = (user == nil)
         }

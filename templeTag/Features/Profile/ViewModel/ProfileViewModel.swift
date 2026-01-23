@@ -15,7 +15,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var displayName: String = ""
     @Published var initials: String = "??"
     @Published var avatar: Image? = nil
-    @Published var homeTemple: String = ""
+    @Published var homeTemple: String = "Provo City Center Temple"
     @Published var memberSince: Date? = nil
     @Published var isLoading: Bool = false
     

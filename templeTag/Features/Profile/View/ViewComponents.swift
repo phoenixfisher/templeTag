@@ -19,10 +19,11 @@ struct Avatar: View {
                     .scaledToFill()
             } else {
                 Image(systemName: "person.fill")
+                    .resizable()
             }
         }
         .clipShape(Circle())
-        .shadow(radius: 3, y: 1)
+        .shadow(radius: 3)
     }
 }
 
@@ -70,7 +71,7 @@ struct StatCard: View {
         .background(
             RoundedRectangle(cornerRadius: 18)
                 .fill(.ultraThinMaterial)
-                .shadow(radius: 2, y: 1)
+                .shadow(radius: 2)
         )
     }
 }
@@ -147,7 +148,7 @@ struct BadgeCard: View {
         .background(
             RoundedRectangle(cornerRadius: 18)
                 .fill(.ultraThinMaterial)
-                .shadow(radius: 3, y: 2)
+                .shadow(radius: 3)
         )
     }
 }
