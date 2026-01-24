@@ -31,7 +31,6 @@ struct ProfileView: View {
                     recentActivity
                     settings
                 }
-                .padding(.horizontal, 16)
                 .padding(.vertical, 24)
             }
             .background(.background)
@@ -128,27 +127,27 @@ struct ProfileView: View {
                 }
             }
         }
+        .padding(.horizontal)
     }
     
     // Stats
     private var stats: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .center, spacing: 12) {
             SectionHeader(title: "Overview")
             LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
-                StatCard(title: "Temples Visited",
-                         value: "\(vm.totalVisited)",
-                         subtitle: "of \(vm.totalTemples)")
-                StatCard(title: "Countries",
-                         value: "\(vm.countriesVisited)",
-                         subtitle: "visited")
+                StatCard(title: "Total Visits",
+                         value: "\(vm.totalVisited)")
+                StatCard(title: "Countries Visited",
+                         value: "\(vm.countriesVisited)")
                 StatCard(title: "Last Visit",
                          value: vm.lastVisit?.templeName ?? "—",
-                         subtitle: vm.lastVisit.map { $0.date.formatted(date: .abbreviated, time: .omitted) } ?? "")
+                         subtitle: vm.lastVisit.map { $0.date.formatted(date: .abbreviated, time: .omitted) } ?? nil)
                 StatCard(title: "Upcoming",
                          value: vm.upcomingVisit?.templeName ?? "—",
-                         subtitle: vm.upcomingVisit.map { $0.date.formatted(date: .abbreviated, time: .omitted) } ?? "")
+                         subtitle: vm.upcomingVisit.map { $0.date.formatted(date: .abbreviated, time: .omitted) } ?? nil)
             }
         }
+        .padding(.horizontal)
     }
     
     // Progress
@@ -159,15 +158,12 @@ struct ProfileView: View {
                 ProgressRing(progress: vm.progressFraction)
                     .frame(width: 88, height: 88)
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("\(Int(vm.progressFraction * 100))% complete")
+                    Text("Current goal")
+                    Text("\(vm.currentGoal.label)")
                         .font(.headline)
-                    Text("You’ve checked off \(vm.totalVisited) of \(vm.totalTemples) temples.")
+                    Text("So far you’ve checked off \(vm.currentGoal.current) of \(vm.currentGoal.target).")
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
-                    HStack(spacing: 8) {
-                        TagChip(text: "Goal: \(vm.currentGoal.label)")
-                        TagChip(text: vm.currentGoal.progressString)
-                    }
                 }
                 Spacer()
             }
@@ -178,12 +174,14 @@ struct ProfileView: View {
                     .shadow(radius: 4)
             )
         }
+        .padding(.horizontal)
     }
     
     // Achievements
     private var achievements: some View {
         VStack(alignment: .leading, spacing: 12) {
             SectionHeader(title: "Achievements")
+                .padding(.horizontal)
             if vm.badges.isEmpty {
                 EmptyState(text: "No badges yet. Start visiting to earn your first one!")
             } else {
@@ -193,6 +191,7 @@ struct ProfileView: View {
                             BadgeCard(badge: badge)
                         }
                     }
+                    .padding(.horizontal)
                     .padding(.vertical, 4)
                 }
             }
@@ -237,6 +236,7 @@ struct ProfileView: View {
                 }
             }
         }
+        .padding(.horizontal)
     }
     
     // Settings
@@ -277,5 +277,6 @@ struct ProfileView: View {
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
+        .padding(.horizontal)
     }
 }

@@ -29,9 +29,11 @@
 		BD6ACDDF2E9D51A60021C482 /* Visit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDDE2E9D51990021C482 /* Visit.swift */; };
 		BD6ACDE12E9D52EE0021C482 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */; };
 		BD6ACDE52E9D5D530021C482 /* ViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */; };
-		BDA3DEAE2F23473B000F75A1 /* AddVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEAD2F234738000F75A1 /* AddVisitView.swift */; };
+		BDA3DEAE2F23473B000F75A1 /* AddVisitRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEAD2F234738000F75A1 /* AddVisitRootView.swift */; };
 		BDA3DEB22F234879000F75A1 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEB12F234878000F75A1 /* Goal.swift */; };
 		BDA3DEB42F23488D000F75A1 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEB32F23488C000F75A1 /* Badge.swift */; };
+		BDA3DEB62F247C48000F75A1 /* PlanVisitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEB52F247C46000F75A1 /* PlanVisitView.swift */; };
+		BDA3DEB82F247C5F000F75A1 /* RecordVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDA3DEB72F247C5C000F75A1 /* RecordVisit.swift */; };
 		BDB4396A2EA4B1CA00806775 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB439692EA4B1C800806775 /* AuthRouter.swift */; };
 		BDB4396E2EA4B2BA00806775 /* AuthSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4396D2EA4B2B800806775 /* AuthSheetView.swift */; };
 		BDB439702EA4BA4B00806775 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB4396F2EA4BA4800806775 /* AuthButton.swift */; };
@@ -92,9 +94,11 @@
 		BD6ACDDE2E9D51990021C482 /* Visit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Visit.swift; sourceTree = "<group>"; };
 		BD6ACDE02E9D52EB0021C482 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		BD6ACDE42E9D5D4E0021C482 /* ViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComponents.swift; sourceTree = "<group>"; };
-		BDA3DEAD2F234738000F75A1 /* AddVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitView.swift; sourceTree = "<group>"; };
+		BDA3DEAD2F234738000F75A1 /* AddVisitRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVisitRootView.swift; sourceTree = "<group>"; };
 		BDA3DEB12F234878000F75A1 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		BDA3DEB32F23488C000F75A1 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		BDA3DEB52F247C46000F75A1 /* PlanVisitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanVisitView.swift; sourceTree = "<group>"; };
+		BDA3DEB72F247C5C000F75A1 /* RecordVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordVisit.swift; sourceTree = "<group>"; };
 		BDB439692EA4B1C800806775 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		BDB4396D2EA4B2B800806775 /* AuthSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSheetView.swift; sourceTree = "<group>"; };
 		BDB4396F2EA4BA4800806775 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
@@ -331,7 +335,9 @@
 		BDA3DEAC2F234730000F75A1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BDA3DEAD2F234738000F75A1 /* AddVisitView.swift */,
+				BDA3DEAD2F234738000F75A1 /* AddVisitRootView.swift */,
+				BDA3DEB72F247C5C000F75A1 /* RecordVisit.swift */,
+				BDA3DEB52F247C46000F75A1 /* PlanVisitView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -505,6 +511,7 @@
 				BD4254672E978FFF00ECF06A /* SearchView.swift in Sources */,
 				BD6ACDE52E9D5D530021C482 /* ViewComponents.swift in Sources */,
 				BDB4396A2EA4B1CA00806775 /* AuthRouter.swift in Sources */,
+				BDA3DEB82F247C5F000F75A1 /* RecordVisit.swift in Sources */,
 				BD626A032E9942BF00FA087C /* MapsViewModel.swift in Sources */,
 				BDB7F4D92E9897D600CA2483 /* TempleViewModel.swift in Sources */,
 				BDB7F4E42E98BD4F00CA2483 /* TempleDetailView.swift in Sources */,
@@ -513,8 +520,9 @@
 				BDFA7EB42E9E254D006A9577 /* AuthViewModel.swift in Sources */,
 				BDB439702EA4BA4B00806775 /* AuthButton.swift in Sources */,
 				BD4254732E9793AF00ECF06A /* LocationAuth.swift in Sources */,
+				BDA3DEB62F247C48000F75A1 /* PlanVisitView.swift in Sources */,
 				BD6ACDDF2E9D51A60021C482 /* Visit.swift in Sources */,
-				BDA3DEAE2F23473B000F75A1 /* AddVisitView.swift in Sources */,
+				BDA3DEAE2F23473B000F75A1 /* AddVisitRootView.swift in Sources */,
 				BD2598BA2E98290000AC260F /* Temple.swift in Sources */,
 				BD5C53352EA551C9005C819B /* TempleTagApp.swift in Sources */,
 				BDB4396E2EA4B2BA00806775 /* AuthSheetView.swift in Sources */,

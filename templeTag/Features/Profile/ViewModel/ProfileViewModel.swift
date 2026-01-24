@@ -25,18 +25,28 @@ final class ProfileViewModel: ObservableObject {
     @Published var countriesVisited: Int = 3
     
     // Activity
-    @Published var lastVisit: Visit? = nil
-    @Published var upcomingVisit: Visit? = nil
-    @Published var recentVisits: [Visit] = []
+    @Published var lastVisit: Visit? = Visit(templeName: "Pason Temple", date: Date() - 1000000, note: "Fun")
+    @Published var upcomingVisit: Visit? = Visit(templeName: "Pason Temple", date: Date() + 600000, note: "Fun")
+    @Published var recentVisits: [Visit] = [
+        Visit(templeName: "Pason Temple", date: Date() - 1000000, note: "Fun"),
+        Visit(templeName: "Las Vegas Temple", date: Date() - 5000000, note: "Fun"),
+        Visit(templeName: "Mesa Temple", date: Date() - 9000000, note: "Fun")
+    ]
     
     // Achievements
-    @Published var badges: [Badge] = []
+    @Published var badges: [Badge] = [
+        Badge(title: "Early Riser", subtitle: "Checked in before 7 AM", icon: "sunrise.fill"),
+        Badge(title: "Streak Keeper", subtitle: "7 days in a row", icon: "flame.fill"),
+        Badge(title: "Community Helper", subtitle: "Assisted 3 members", icon: "hands.sparkles.fill"),
+        Badge(title: "Pilgrim", subtitle: "Visited 5 temples", icon: "figure.walk"),
+        Badge(title: "Mindful Moment", subtitle: "Meditated for 20 minutes", icon: "brain.head.profile")
+    ]
     
     // Settings
     @Published var notificationsEnabled: Bool = false
     
     // Goal
-    @Published var currentGoal: Goal = .init(label: "Visit 26 temples this year", current: 5, target: 26)
+    @Published var currentGoal: Goal = .init(label: "Visit 26 temples this year", current: 11, target: 26)
     
     // Editor
     @Published var isEditing: Bool = false
@@ -50,7 +60,7 @@ final class ProfileViewModel: ObservableObject {
     
     // Derived
     var progressFraction: CGFloat {
-        guard totalTemples > 0 else { return 0 }
-        return CGFloat(min(1.0, max(0.0, Double(totalVisited) / Double(totalTemples))))
+        guard currentGoal.target > 0 else { return 0 }
+        return CGFloat(min(1.0, max(0.0, Double(currentGoal.current) / Double(currentGoal.target))))
     }
 }

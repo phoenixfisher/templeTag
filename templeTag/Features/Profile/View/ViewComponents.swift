@@ -51,22 +51,22 @@ struct SectionHeader: View {
 struct StatCard: View {
     var title: String
     var value: String
-    var subtitle: String
+    var subtitle: String? = nil
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .center, spacing: 6) {
             Text(title)
                 .font(.footnote)
                 .foregroundStyle(.secondary)
             Text(value)
-                .font(.title3.weight(.semibold))
-            if !subtitle.isEmpty {
+                .font(.headline.weight(.semibold))
+            if let subtitle {
                 Text(subtitle)
                     .font(.footnote)
                     .foregroundStyle(.secondary)
             }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
+        .frame(maxWidth: .infinity)
         .padding(14)
         .background(
             RoundedRectangle(cornerRadius: 18)
@@ -143,7 +143,7 @@ struct BadgeCard: View {
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
         }
-        .frame(width: 140)
+        .frame(width: 140, height: 120)
         .padding(12)
         .background(
             RoundedRectangle(cornerRadius: 18)

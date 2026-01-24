@@ -20,7 +20,7 @@ struct MainTabView: View {
             
             Tab("Search", systemImage: "magnifyingglass") { SearchView() }
             
-            Tab("Add", systemImage: "plus") { AddVisitView() }
+            Tab("Add", systemImage: "plus") { AddVisitRootView() }
             
             Tab("Map", systemImage: "map") { MapsMainView() }
             
