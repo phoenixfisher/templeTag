@@ -11,6 +11,9 @@ struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @ObservedObject var vm: ProfileViewModel
     
+    @State private var deletionRequested: Bool = false
+    @State private var discardChangesDialog: Bool = false
+    
     private var hasChanges: Bool {
         false
     }
@@ -30,6 +33,7 @@ struct EditProfileView: View {
                 Text("Personal Information")
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top)
                 
                 VStack(spacing: 0) {
                     SettingRow(title: "Full Name", detail: vm.displayName) {
@@ -55,6 +59,7 @@ struct EditProfileView: View {
                 Text("Church Information")
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top)
                 
                 VStack(spacing: 0) {
                     SettingRow(title: "Ward", detail: vm.displayName) {
@@ -80,17 +85,18 @@ struct EditProfileView: View {
                 Text("Settings")
                     .font(.headline)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top)
                 
                 VStack(spacing: 0) {
-                    SettingRow(title: "Ward", detail: vm.displayName) {
+                    SettingRow(title: "Notifications", detail: vm.displayName) {
                         
                     }
                     Divider()
-                    SettingRow(title: "Stake", detail: vm.displayName) {
+                    SettingRow(title: "Privacy", detail: vm.displayName) {
                         
                     }
                     Divider()
-                    SettingRow(title: "Home Temple", detail: vm.homeTemple) {
+                    SettingRow(title: "Help & Support", detail: vm.displayName) {
                         
                     }
                 }
@@ -100,12 +106,41 @@ struct EditProfileView: View {
                         .fill(.ultraThinMaterial)
                         .shadow(radius: 4)
                 )
+                
+                Button(role: .destructive) {
+                    deletionRequested = true
+                } label: {
+                    Label("Delete Account", systemImage: "trash")
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 30)
+                }
+                .confirmationDialog("Delete Account?", isPresented: $deletionRequested, titleVisibility: .visible) {
+                    Button("Delete Account", role: .destructive) {
+                        if vm.deleteProfile() {
+                            dismiss()
+                        }
+                    }
+                    Button("Cancel", role: .cancel) { }
+                } message: {
+                    Text("All your data will be lost forever. This action cannot be undone.")
+                }
+                .buttonStyle(.bordered)
+                .tint(.red)
+                .padding(.top)
             }
             .padding()
         }
         .toolbar {
             ToolbarItem(placement: .topBarLeading) {
-                Button("Cancel", role: .cancel) { dismiss() }
+                Button("Cancel", role: .cancel) {
+                    hasChanges ? discardChangesDialog = true : dismiss()
+                }
+                .confirmationDialog("Discard changes?", isPresented: $discardChangesDialog) {
+                    Button("Discard", role: .destructive) {
+                        dismiss()
+                    }
+                    Button("Cancel", role: .cancel) { }
+                }
             }
             ToolbarItem(placement: .topBarTrailing) {
                 Button(hasChanges ? "Save" : "Done") {

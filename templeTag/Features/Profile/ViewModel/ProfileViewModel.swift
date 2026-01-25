@@ -68,4 +68,8 @@ final class ProfileViewModel: ObservableObject {
     func saveProfile() -> Bool {
         return true
     }
+    
+    func deleteProfile() -> Bool {
+        return true
+    }
 }
