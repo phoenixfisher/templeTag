@@ -27,26 +27,6 @@ struct Avatar: View {
     }
 }
 
-// Section headers as potential
-struct SectionHeader: View {
-    var title: String
-    var actionTitle: String? = nil
-    var action: (() -> Void)? = nil
-    
-    var body: some View {
-        HStack {
-            Text(title)
-                .font(.headline)
-            Spacer()
-            if let actionTitle, let action {
-                Button(actionTitle, action: action)
-                    .font(.subheadline.weight(.semibold))
-            }
-        }
-        .padding(.horizontal, 4)
-    }
-}
-
 // Base info card on profile page
 struct StatCard: View {
     var title: String
@@ -73,18 +53,6 @@ struct StatCard: View {
                 .fill(.ultraThinMaterial)
                 .shadow(radius: 2)
         )
-    }
-}
-
-// Small lightly shaded capsule card. Used for current goal
-struct TagChip: View {
-    var text: String
-    var body: some View {
-        Text(text)
-            .font(.caption.weight(.medium))
-            .padding(.horizontal, 10)
-            .padding(.vertical, 6)
-            .background(.thinMaterial, in: Capsule())
     }
 }
 
@@ -134,7 +102,6 @@ struct BadgeCard: View {
             Image(systemName: badge.icon)
                 .font(.title2)
                 .padding(12)
-                .background(.thinMaterial, in: Circle())
             Text(badge.title)
                 .font(.footnote.weight(.semibold))
                 .multilineTextAlignment(.center)
@@ -166,7 +133,6 @@ struct SettingRow: View {
                 Image(systemName: icon)
                     .font(.body.weight(.semibold))
                     .frame(width: 28, height: 28)
-                    .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 8))
                 Text(title)
                     .font(.body)
                 Spacer()
@@ -184,3 +150,4 @@ struct SettingRow: View {
         .buttonStyle(.plain)
     }
 }
+

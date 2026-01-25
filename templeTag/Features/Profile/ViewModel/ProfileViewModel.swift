@@ -23,6 +23,7 @@ final class ProfileViewModel: ObservableObject {
     @Published var totalVisited: Int = 30
     @Published var totalTemples: Int = 43
     @Published var countriesVisited: Int = 3
+    @Published var currentStreak: Int = 6
     
     // Activity
     @Published var lastVisit: Visit? = Visit(templeName: "Pason Temple", date: Date() - 1000000, note: "Fun")
@@ -52,7 +53,6 @@ final class ProfileViewModel: ObservableObject {
     @Published var isEditing: Bool = false
     
     // Handlers
-    var onEditProfile: (() -> Void)?
     var onToggleNotifications: (() -> Void)?
     var onChangeDefaultView: (() -> Void)?
     var onExport: (() -> Void)?
@@ -62,5 +62,9 @@ final class ProfileViewModel: ObservableObject {
     var progressFraction: CGFloat {
         guard currentGoal.target > 0 else { return 0 }
         return CGFloat(min(1.0, max(0.0, Double(currentGoal.current) / Double(currentGoal.target))))
+    }
+    
+    func saveProfile() -> Bool {
+        return true
     }
 }

@@ -41,7 +41,8 @@ struct ProfileView: View {
                 vm.userId = newId ?? ""
             }
             .sheet(isPresented: $vm.isEditing) {
-                // TODO: EditingProfileView
+                // Edit profile view
+                EditProfileView(vm: vm)
             }
         }
     }
@@ -103,6 +104,7 @@ struct ProfileView: View {
                 VStack(alignment: .center, spacing: 16) {
                     Avatar(image: vm.avatar)
                         .frame(width: 110, height: 110)
+                        .padding(.top)
                     
                     // Name
                     if let name = authVM.user?.displayName, !name.isEmpty {
@@ -121,8 +123,8 @@ struct ProfileView: View {
                             .foregroundStyle(.secondary)
                     }
                     
-                    Button("Edit Profile") {
-                        vm.onEditProfile?()
+                    Button("Edit profile \(Image(systemName: "chevron.right"))") {
+                        vm.isEditing = true
                     }
                 }
             }
@@ -133,15 +135,21 @@ struct ProfileView: View {
     // Stats
     private var stats: some View {
         VStack(alignment: .center, spacing: 12) {
-            SectionHeader(title: "Overview")
+            Text("Temple Activity")
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
             LazyVGrid(columns: [GridItem(.flexible(), spacing: 12), GridItem(.flexible(), spacing: 12)], spacing: 12) {
                 StatCard(title: "Total Visits",
                          value: "\(vm.totalVisited)")
+                
                 StatCard(title: "Countries Visited",
                          value: "\(vm.countriesVisited)")
+                
                 StatCard(title: "Last Visit",
                          value: vm.lastVisit?.templeName ?? "—",
                          subtitle: vm.lastVisit.map { $0.date.formatted(date: .abbreviated, time: .omitted) } ?? nil)
+                
                 StatCard(title: "Upcoming",
                          value: vm.upcomingVisit?.templeName ?? "—",
                          subtitle: vm.upcomingVisit.map { $0.date.formatted(date: .abbreviated, time: .omitted) } ?? nil)
@@ -153,7 +161,8 @@ struct ProfileView: View {
     // Progress
     private var progress: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(title: "Progress")
+            Text("Progress")
+                .font(.headline)
             HStack(spacing: 16) {
                 ProgressRing(progress: vm.progressFraction)
                     .frame(width: 88, height: 88)
@@ -180,8 +189,14 @@ struct ProfileView: View {
     // Achievements
     private var achievements: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(title: "Achievements")
-                .padding(.horizontal)
+            HStack {
+                Text("Achievements")
+                    .font(.headline)
+                Spacer()
+                NavigationLink("View All \(Image(systemName: "chevron.right"))", destination: AllBadgesView())
+            }
+            .padding(.horizontal)
+            
             if vm.badges.isEmpty {
                 EmptyState(text: "No badges yet. Start visiting to earn your first one!")
             } else {
@@ -201,7 +216,12 @@ struct ProfileView: View {
     // Recent Activity
     private var recentActivity: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(title: "Recent Activity")
+            HStack {
+                Text("Recent Activity")
+                    .font(.headline)
+                Spacer()
+                NavigationLink("See All \(Image(systemName: "chevron.right"))", destination: RecentVisitsView())
+            }
             if vm.recentVisits.isEmpty {
                 EmptyState(text: "No recent visits recorded.")
             } else {
@@ -242,7 +262,8 @@ struct ProfileView: View {
     // Settings
     private var settings: some View {
         VStack(alignment: .leading, spacing: 12) {
-            SectionHeader(title: "Settings")
+            Text("Settings")
+                .font(.headline)
             VStack(spacing: 8) {
                 SettingRow(icon: "bell.badge", title: "Notifications", detail: vm.notificationsEnabled ? "On" : "Off") {
                     vm.onToggleNotifications?()
