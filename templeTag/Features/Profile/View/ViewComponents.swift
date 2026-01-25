@@ -24,6 +24,7 @@ struct Avatar: View {
         }
         .clipShape(Circle())
         .shadow(radius: 3)
+        .frame(width: 110, height: 110)
     }
 }
 
@@ -122,7 +123,7 @@ struct BadgeCard: View {
 
 // Row outline for mutable settings
 struct SettingRow: View {
-    var icon: String
+    var icon: String?
     var title: String
     var detail: String?
     var action: () -> Void
@@ -130,17 +131,22 @@ struct SettingRow: View {
     var body: some View {
         Button(action: action) {
             HStack(spacing: 12) {
-                Image(systemName: icon)
-                    .font(.body.weight(.semibold))
-                    .frame(width: 28, height: 28)
+                if let icon {
+                    Image(systemName: icon)
+                        .font(.body.weight(.semibold))
+                        .frame(width: 28, height: 28)
+                }
+                
                 Text(title)
                     .font(.body)
                 Spacer()
+                
                 if let detail {
                     Text(detail)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
+                
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)

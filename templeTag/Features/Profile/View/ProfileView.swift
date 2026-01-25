@@ -42,7 +42,9 @@ struct ProfileView: View {
             }
             .sheet(isPresented: $vm.isEditing) {
                 // Edit profile view
-                EditProfileView(vm: vm)
+                NavigationStack {
+                    EditProfileView(vm: vm)
+                }
             }
         }
     }
@@ -103,7 +105,6 @@ struct ProfileView: View {
             } else {
                 VStack(alignment: .center, spacing: 16) {
                     Avatar(image: vm.avatar)
-                        .frame(width: 110, height: 110)
                         .padding(.top)
                     
                     // Name

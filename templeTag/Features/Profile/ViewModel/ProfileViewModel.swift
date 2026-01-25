@@ -57,6 +57,7 @@ final class ProfileViewModel: ObservableObject {
     var onChangeDefaultView: (() -> Void)?
     var onExport: (() -> Void)?
     var onPrivacy: (() -> Void)?
+    var onChangePhoto: (() -> Void)?
     
     // Derived
     var progressFraction: CGFloat {

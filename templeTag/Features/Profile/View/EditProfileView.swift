@@ -17,31 +17,107 @@ struct EditProfileView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                // Top bar
-                HStack {
-                    Button(role: .cancel) {
-                        dismiss()
-                    } label: {
-                        Image(systemName: "xmark")
-                    }
-                    
-                    Spacer()
-                    
-                    Button {
-                        let success = vm.saveProfile()
-                        success ? dismiss() : ()
-                    } label: {
-                        Text(hasChanges ? "Save" : "Done")
-                    }
+            VStack(alignment: .center, spacing: 12) {
+                
+                // MARK: Profile photo
+                Avatar(image: vm.avatar)
+                
+                Button("Change Photo") {
+                    vm.onChangePhoto?()
                 }
                 
-                // Main view
-                VStack {
-                    
+                // MARK: Identifying information
+                Text("Personal Information")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                VStack(spacing: 0) {
+                    SettingRow(title: "Full Name", detail: vm.displayName) {
+                        
+                    }
+                    Divider()
+                    SettingRow(title: "Email", detail: vm.displayName) {
+                        
+                    }
+                    Divider()
+                    SettingRow(title: "Phone Number", detail: vm.displayName) {
+                        
+                    }
+                }
+                .padding(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(.ultraThinMaterial)
+                        .shadow(radius: 4)
+                )
+                
+                // MARK: Church info
+                Text("Church Information")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                VStack(spacing: 0) {
+                    SettingRow(title: "Ward", detail: vm.displayName) {
+                        
+                    }
+                    Divider()
+                    SettingRow(title: "Stake", detail: vm.displayName) {
+                        
+                    }
+                    Divider()
+                    SettingRow(title: "Home Temple", detail: vm.homeTemple) {
+                        
+                    }
+                }
+                .padding(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(.ultraThinMaterial)
+                        .shadow(radius: 4)
+                )
+                
+                // MARK: Settings
+                Text("Settings")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                VStack(spacing: 0) {
+                    SettingRow(title: "Ward", detail: vm.displayName) {
+                        
+                    }
+                    Divider()
+                    SettingRow(title: "Stake", detail: vm.displayName) {
+                        
+                    }
+                    Divider()
+                    SettingRow(title: "Home Temple", detail: vm.homeTemple) {
+                        
+                    }
+                }
+                .padding(12)
+                .background(
+                    RoundedRectangle(cornerRadius: 24)
+                        .fill(.ultraThinMaterial)
+                        .shadow(radius: 4)
+                )
+            }
+            .padding()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button("Cancel", role: .cancel) { dismiss() }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(hasChanges ? "Save" : "Done") {
+                    if hasChanges {
+                        if vm.saveProfile() {
+                            dismiss()
+                        }
+                    } else {
+                        dismiss()
+                    }
                 }
             }
-            .padding(.horizontal, 24)
         }
     }
 }
