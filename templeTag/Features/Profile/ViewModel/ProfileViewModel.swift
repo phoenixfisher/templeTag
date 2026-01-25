@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+@MainActor
 final class ProfileViewModel: ObservableObject {
     // Display
     @Published var userId: String = ""
