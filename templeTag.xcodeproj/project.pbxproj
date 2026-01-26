@@ -11,6 +11,8 @@
 		BD07E3B22F25925300566CDE /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07E3B12F25924D00566CDE /* EditProfileView.swift */; };
 		BD07E3B42F259B5A00566CDE /* AllBadgesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07E3B32F259B5700566CDE /* AllBadgesView.swift */; };
 		BD07E3B92F25C39A00566CDE /* Ordinance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07E3B82F25C39800566CDE /* Ordinance.swift */; };
+		BD07E3BB2F26E35A00566CDE /* DateTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07E3BA2F26E35800566CDE /* DateTimePicker.swift */; };
+		BD07E3BE2F26ED9E00566CDE /* VisitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD07E3BD2F26ED9D00566CDE /* VisitViewModel.swift */; };
 		BD2598B82E9828DA00AC260F /* TempleClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B72E9828D500AC260F /* TempleClient.swift */; };
 		BD2598BA2E98290000AC260F /* Temple.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2598B92E9828F900AC260F /* Temple.swift */; };
 		BD2EED592EA75A1D009C6160 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2EED582EA75A1A009C6160 /* Extensions.swift */; };
@@ -73,6 +75,8 @@
 		BD07E3B12F25924D00566CDE /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		BD07E3B32F259B5700566CDE /* AllBadgesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllBadgesView.swift; sourceTree = "<group>"; };
 		BD07E3B82F25C39800566CDE /* Ordinance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ordinance.swift; sourceTree = "<group>"; };
+		BD07E3BA2F26E35800566CDE /* DateTimePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimePicker.swift; sourceTree = "<group>"; };
+		BD07E3BD2F26ED9D00566CDE /* VisitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitViewModel.swift; sourceTree = "<group>"; };
 		BD2598B72E9828D500AC260F /* TempleClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempleClient.swift; sourceTree = "<group>"; };
 		BD2598B92E9828F900AC260F /* Temple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temple.swift; sourceTree = "<group>"; };
 		BD2EED582EA75A1A009C6160 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -143,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD07E3BC2F26ED9800566CDE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				BD07E3BD2F26ED9D00566CDE /* VisitViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		BD2598B42E98125D00AC260F /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -273,6 +285,7 @@
 		BD4254702E97932B00ECF06A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BD07E3BA2F26E35800566CDE /* DateTimePicker.swift */,
 				BD5C53342EA551C4005C819B /* TempleTagApp.swift */,
 				BDB4396F2EA4BA4800806775 /* AuthButton.swift */,
 				BDB4396D2EA4B2B800806775 /* AuthSheetView.swift */,
@@ -334,6 +347,7 @@
 		BDA3DEAB2F234723000F75A1 /* AddVisit */ = {
 			isa = PBXGroup;
 			children = (
+				BD07E3BC2F26ED9800566CDE /* ViewModel */,
 				BDA3DEAC2F234730000F75A1 /* View */,
 			);
 			path = AddVisit;
@@ -530,6 +544,7 @@
 				BD07E3AF2F258CF100566CDE /* RecentVisitsView.swift in Sources */,
 				BD6ACDDF2E9D51A60021C482 /* Visit.swift in Sources */,
 				BDA3DEAE2F23473B000F75A1 /* LogVisitView.swift in Sources */,
+				BD07E3BE2F26ED9E00566CDE /* VisitViewModel.swift in Sources */,
 				BD2598BA2E98290000AC260F /* Temple.swift in Sources */,
 				BD5C53352EA551C9005C819B /* TempleTagApp.swift in Sources */,
 				BDB4396E2EA4B2BA00806775 /* AuthSheetView.swift in Sources */,
@@ -540,6 +555,7 @@
 				BD4254692E97900900ECF06A /* HomeView.swift in Sources */,
 				BDA3DEB22F234879000F75A1 /* Goal.swift in Sources */,
 				BD4254632E978F9A00ECF06A /* ProfileView.swift in Sources */,
+				BD07E3BB2F26E35A00566CDE /* DateTimePicker.swift in Sources */,
 				BD2EED592EA75A1D009C6160 /* Extensions.swift in Sources */,
 				BD6269FF2E993B7100FA087C /* ShowOnMap.swift in Sources */,
 				BD2EED5F2EA765E2009C6160 /* CameraPicker.swift in Sources */,
