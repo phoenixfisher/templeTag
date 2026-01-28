@@ -19,10 +19,17 @@ struct LogVisitView: View {
     @State private var selectedTemple: String? = nil
     @State private var selectedOrdinances: [Ordinance] = []
     
+    @State private var newCompanionName: String = ""
+    @State private var newNote: String = ""
+    
+    private var validForm: Bool {
+        selectedTemple != nil && selectedOrdinances.count > 0
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 14) {
                     // Select a temple
                     // TODO: Make a typing selector of some sort
                     VStack(alignment: .leading) {
@@ -41,7 +48,7 @@ struct LogVisitView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .background(.ultraThinMaterial)
                         .cornerRadius(16)
-                        .shadow(radius: 2)
+                        .shadow(radius: 1)
                     }
                     
                     // Select a date
@@ -61,10 +68,11 @@ struct LogVisitView: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .background(.ultraThinMaterial)
                             .cornerRadius(16)
-                            .shadow(radius: 2)
+                            .shadow(radius: 1)
                         }
                         .sheet(isPresented: $showDateTimePicker) {
                             DateTimePicker(date: $date, time: $time)
+                                .presentationDetents([.medium, .large])
                         }
                     }
 
@@ -104,7 +112,7 @@ struct LogVisitView: View {
                                     .background(
                                         RoundedRectangle(cornerRadius: 16).fill(isSelected ? AnyShapeStyle(Color(.tintColor).opacity(0.4)) : AnyShapeStyle(.thinMaterial))
                                     )
-                                    .shadow(radius: 2)
+                                    .shadow(radius: 1)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 16).stroke(isSelected ? Color(.tintColor) : .clear, lineWidth: isSelected ? 2 : 0)
                                     )
@@ -114,14 +122,37 @@ struct LogVisitView: View {
                     }
                     
                     // Add companions
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("Companions")
                             .font(.headline)
+                        TextField("Add someone to this visit", text: $newCompanionName)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .frame(maxWidth: .infinity)
+                            .background(.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 1)
+                            .textFieldStyle(.plain)
+                            .textInputAutocapitalization(.words)
+                            .autocorrectionDisabled(false)
+                            .submitLabel(.done)
                     }
                     
-                    VStack {
+                    // Add notes
+                    VStack(alignment: .leading) {
                         Text("Notes")
                             .font(.headline)
+                        TextField("Describe your visit here", text: $newNote)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .frame(maxWidth: .infinity)
+                            .background(.white)
+                            .cornerRadius(10)
+                            .shadow(radius: 1)
+                            .textFieldStyle(.plain)
+                            .textInputAutocapitalization(.sentences)
+                            .autocorrectionDisabled(false)
+                            .submitLabel(.done)
                     }
                     
                     Button {
@@ -131,13 +162,13 @@ struct LogVisitView: View {
                             // TODO: Toast message
                         }
                     } label: {
-                        Text("Save Visit")
-                            .font(.title2.weight(.semibold))
+                        Text("Log Temple Visit")
+                            .font(.title2.weight(.medium))
                             .frame(maxWidth: .infinity)
-                            .background(Color(.tintColor))
-                            .cornerRadius(16)
-                            .foregroundStyle(.white)
+                            .frame(height: 40)
                     }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(!validForm)
                 }
                 .padding()
             }
