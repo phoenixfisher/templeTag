@@ -104,17 +104,16 @@ struct LogVisitView: View {
                                             .font(.title3)
 
                                         Text(type.rawValue)
-                                            .font(.headline)
                                     }
                                     .frame(maxWidth: .infinity)
                                     .frame(height: 60)
                                     .padding()
                                     .background(
-                                        RoundedRectangle(cornerRadius: 16).fill(isSelected ? AnyShapeStyle(Color(.tintColor).opacity(0.4)) : AnyShapeStyle(.thinMaterial))
+                                        RoundedRectangle(cornerRadius: 16).fill(isSelected ? AnyShapeStyle(Color(.tintColor).opacity(0.1)) : AnyShapeStyle(.thinMaterial))
                                     )
                                     .shadow(radius: 1)
                                     .overlay(
-                                        RoundedRectangle(cornerRadius: 16).stroke(isSelected ? Color(.tintColor) : .clear, lineWidth: isSelected ? 2 : 0)
+                                        RoundedRectangle(cornerRadius: 16).stroke(isSelected ? Color(.tintColor).opacity(0.6) : .clear, lineWidth: isSelected ? 2 : 0)
                                     )
                                 }
                             }
